@@ -1,4 +1,9 @@
 
+Release 1.0.2 -- July 8 2004
+----------------------------
+- Added Microsoft VisualStudio.NET projects files. They have been present
+  since 1.0.0 but not in distributed form, e.g., *.tar.gz or *.zip.
+
 Release 1.0.1 -- February 5 2004
 --------------------------------
 - Added a Microsoft Studio .NET project/solution that compiles both the 

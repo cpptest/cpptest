@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.2 2004/02/04 21:08:23 nilu Exp $
+## $Id: configure.ac,v 1.3 2004/07/08 12:19:21 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -28,7 +28,7 @@
 
 AC_PREREQ(2.53)
 
-AC_INIT(CppTest, 1.0.1, , cpptest)
+AC_INIT(CppTest, 1.0.2, , cpptest)
 
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config/config.h)
@@ -45,7 +45,7 @@ AM_INIT_AUTOMAKE([gnu dist-zip])
 #
 # current:revision:age
 #
-LT_VERSION=0:1:0
+LT_VERSION=0:2:0
 AC_SUBST(LT_VERSION, $LT_VERSION)
 
 ##### Alternatives
