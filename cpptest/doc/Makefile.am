@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.1 2003/05/13 13:34:13 nilu Exp $
+## $Id: Makefile.am,v 1.2 2003/05/13 15:55:16 nilu Exp $
 ##
 ## C++Test - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -45,6 +45,7 @@ html_DATA 	= html/index.html
 
 all-local:
 	doxygen
+	cp -dpR images/* html/
 
 html/index.html:
 
