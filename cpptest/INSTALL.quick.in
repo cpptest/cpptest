@@ -1,0 +1,44 @@
+Installing the C++Test library
+
+Table of contents
+=================
+
+  - Using GNU tools
+    - Simple install procedure
+    - Configuration options
+  - Under Microsoft Windows
+
+Using GNU tools
+===============
+
+For more detailed information about the installation process, see INSTALL.
+
+Simple install procedure
+------------------------
+
+  > gzip -cd cpptest-@VERSION@.tar.gz | tar xvf -   # unpack the sources
+  > cd cpptest-@VERSION@                            # change to the its directory
+  > ./configure                                 # run the 'configure' script
+  > make                                        # build 'cpptest'
+
+  [ Become root if necessary ]
+
+  > make install
+
+Configuration options
+---------------------
+
+The 'configure' script can be given a number of options to enable
+and disable various features. For a complete list, type:
+
+  ./configure --help
+
+Under Microsoft Windows
+=======================
+
+Windows specific files are found under the 'win' directory. 
+
+If you are using Microsoft Visual Studio, it is suggested that you create an
+own project for compiling the library and test program. Do not forget to add an
+include path to the 'win' directory.
+
