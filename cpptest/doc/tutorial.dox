@@ -18,13 +18,13 @@
 
 \section tutorial_introduction Introduction
 
-C++Test is a portable and powerful, yet simple, unit testing framework for 
+CppTest is a portable and powerful, yet simple, unit testing framework for 
 handling automated tests in C++. The focus lies on usability and extendability.
 Several output formats are supported and new ones are easily added.
 
 This tutorial is intened to quickly get you started.
 
-C++Test is released under the GNU 
+CppTest is released under the GNU 
 <a href="http://www.gnu.org/copyleft/lesser.html">
 Lesser General Public License</a>.
 

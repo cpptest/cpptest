@@ -1,8 +1,8 @@
 // ---
 //
-// $Id: htmloutput.cpp,v 1.1 2003/05/13 13:34:13 nilu Exp $
+// $Id: htmloutput.cpp,v 1.2 2004/02/04 21:08:23 nilu Exp $
 //
-// C++Test - A C++ Unit Testing Framework
+// CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
 //
 // ---
@@ -48,7 +48,7 @@ namespace Test
 				"<html>\n"
 				"<head>\n"
 				"  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n"
-				"  <meta name=\"generator\" content=\"C++Test - http://cpptest.sourceforge.net\">\n"
+				"  <meta name=\"generator\" content=\"CppTest - http://cpptest.sourceforge.net\">\n"
 				"  \n"
 				"  <title>" << name << "Unit Tests Results</title>\n"
 				"  \n"
@@ -86,7 +86,7 @@ namespace Test
 				"<h1><a name=\"top\"></a>" << name << "Unit Tests Results</h1>\n"
 				"\n"
 				"<div align=\"right\">\n"
-				"Designed by <a href=\"http://cpptest.sourceforge.net\">C++Test</a>\n"
+				"Designed by <a href=\"http://cpptest.sourceforge.net\">CppTest</a>\n"
 				"</div>\n"
 				"<hr>\n"
 				"\n";

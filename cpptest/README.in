@@ -1,4 +1,4 @@
-C++Test - A C++ Unit Testing Framework
+CppTest - A C++ Unit Testing Framework
 
 Table of contents
 =================
@@ -11,7 +11,7 @@ Table of contents
 General information
 ===================
 
-This is C++Test version @VERSION@. C++Test is a portable and powerful, yet
+This is CppTest version @VERSION@. CppTest is a portable and powerful, yet
 simple, unit testing framework for handling automated tests in C++. The focus
 lies on usability and extendability. Several output formats are supported and
 new ones are easily added.
@@ -36,7 +36,7 @@ You will need to create an account on http://sourceforge.net for yourself.
 
 In the bug report please include:
 
-- Information about your system and C++Test version.
+- Information about your system and CppTest version.
 
 - How to reproduce the bug.
   If possible, please include a short test program that reproduces the behavoir.

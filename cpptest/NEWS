@@ -1,5 +1,13 @@
 
+Release 1.0.1 -- February 5 2004
+--------------------------------
+- Added a Microsoft Studio .NET project/solution that compiles both the 
+  library and the test program.
+- Added some more documentation.
+- Changed all "C++Test" strings to "CppTest" after a not so friendly letter
+  from Parasoft, which apparently have an own product called C++Test.
+
 Release 1.0.0 -- Maj 13 2003
 ---------------------------
-* Initial public release.
+- Initial public release.
 

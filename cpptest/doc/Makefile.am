@@ -1,8 +1,8 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.2 2003/05/13 15:55:16 nilu Exp $
+## $Id: Makefile.am,v 1.3 2004/02/04 21:08:23 nilu Exp $
 ##
-## C++Test - A C++ Unit Testing Framework
+## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
 ##
 ## ---
