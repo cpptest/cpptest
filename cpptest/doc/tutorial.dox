@@ -22,7 +22,7 @@ CppTest is a portable and powerful, yet simple, unit testing framework for
 handling automated tests in C++. The focus lies on usability and extendability.
 Several output formats are supported and new ones are easily added.
 
-This tutorial is intened to quickly get you started.
+This tutorial is intended to quickly get you started.
 
 CppTest is released under the GNU 
 <a href="http://www.gnu.org/copyleft/lesser.html">
@@ -159,9 +159,9 @@ This way, you may develop logically separated test suites and run all tests
 at once. For example:
 
 \code
-class TestSuite1: public Test::Suite { /* ... */ };
-class TestSuite2: public Test::Suite { /* ... */ };
-class TestSuite3: public Test::Suite { /* ... */ };
+class TestSuite1: public Test::Suite { }; // ... with many tests
+class TestSuite2: public Test::Suite { }; // ... with many tests
+class TestSuite3: public Test::Suite { }; // ... with many tests
 
 bool run_tests()
 {
@@ -194,11 +194,11 @@ public:
 		TEST_ADD(SomeTestSuite::test2) 
 	}
 protected:
-	virtual void setup()     { /* setup resources...  */ }
-	virtual void tear_down() { /* remove resources... */ }
+	virtual void setup()     {} // setup resources... 
+	virtual void tear_down() {} // remove resources...
 private:
-	void test1() { /* use common resources... */ }
-	void test2() { /* use common resources... */ }
+	void test1() {} // use common resources...
+	void test2() {} // use common resources...
 };
 \endcode
 
