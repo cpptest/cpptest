@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.4 2005/06/08 08:08:06 nilu Exp $
+## $Id: Makefile.am,v 1.5 2005/06/08 09:27:00 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -67,6 +67,10 @@ DISTCLEANFILES = \
 	
 MAINTAINERCLEANFILES = \
 	Makefile.in
+
+else
+
+install-data-hook:
 
 endif # if DOC
 

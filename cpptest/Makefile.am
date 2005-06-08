@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.4 2005/06/08 08:08:06 nilu Exp $
+## $Id: Makefile.am,v 1.5 2005/06/08 09:27:00 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -32,13 +32,12 @@ EXTRA_DIST = \
 	autogen.sh \
 	BUGS \
 	config/stamp-h.in \
+	INSTALL.quick \
+	README \
 	win/config.h \
 	win/VisualStudio.NET/VisualStudio.NET.sln \
 	win/VisualStudio.NET/cpptest/cpptest.vcproj \
 	win/VisualStudio.NET/test/test.vcproj
-
-dist-hook:
-	rm -f $(distdir)/README
 
 ####### Clean
 

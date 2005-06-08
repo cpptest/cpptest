@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.3 2005/06/08 08:08:06 nilu Exp $
+## $Id: Makefile.am,v 1.4 2005/06/08 09:27:00 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -24,13 +24,13 @@
 ##
 ## ---
 
-if DEBUG
-DEBUG_FLAGS=-O0 -g
-else	
-DEBUG_FLAGS=-O2
+WARN_FLAGS		=
+if WARNINGS
+WARN_FLAGS		+= -W -Wall
 endif
+WARN_FLAGS		+= -Wno-unused-parameter
 
-AM_CXXFLAGS		= $(DEBUG_FLAGS) -W -Wall -Wno-unused-parameter
+AM_CXXFLAGS		= $(WARN_FLAGS) 
 
 lib_LTLIBRARIES		= libcpptest.la
 

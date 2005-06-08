@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.4 2005/06/08 08:08:06 nilu Exp $
+## $Id: configure.ac,v 1.5 2005/06/08 09:27:00 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -28,7 +28,7 @@
 
 AC_PREREQ(2.53)
 
-AC_INIT(CppTest, 1.0.2, , cpptest)
+AC_INIT(CppTest, 1.0.3, , cpptest)
 
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config/config.h)
@@ -45,29 +45,10 @@ AM_INIT_AUTOMAKE([gnu dist-zip])
 #
 # current:revision:age
 #
-LT_VERSION=0:2:0
+LT_VERSION=0:3:0
 AC_SUBST(LT_VERSION, $LT_VERSION)
 
 ##### Alternatives
-
-# Debug mode
-#
-AC_ARG_ENABLE(
-	debug,
-	AC_HELP_STRING(
-		[--enable-debug],
-		[Turn on debugging (default=no)]),
-	[ case "$enableval" in
-		yes)	enable_debug=yes ;;
-		no)	enable_debug=no  ;;
-		*)	AC_MSG_ERROR([bad value '$enableval' for --enable-debug]) ;;
-	  esac
-	],
-	[enable_debug=no]
-)
-AM_CONDITIONAL(DEBUG, test "$enable_debug" = "yes")
-AC_MSG_CHECKING(whether to turn on debugging)
-AC_MSG_RESULT($enable_debug)
 
 # Generate documentation 
 # Note: AutoMake conditional will be set when 'doxygen' is checked for.
@@ -76,21 +57,38 @@ AC_ARG_ENABLE(
 	doc,
 	AC_HELP_STRING(
 		[--enable-doc],
-		[Generate documentation (default=yes)]),
+		[Generate documentation (default=no)]),
 	[ case "$enableval" in
 		yes)	enable_doc=yes ;;
 		no)	enable_doc=no  ;;
 		*)	AC_MSG_ERROR([bad value '$enableval' for --enable-doc]) ;;
 	  esac
 	],
-	[enable_doc=yes]
+	[enable_doc=no]
 )
 AC_MSG_CHECKING(whether to generate documentation)
 AC_MSG_RESULT($enable_doc)
 
-##### Programs
+# Enable C++ warnings
+#
+AC_ARG_ENABLE(
+	warnings,
+	AC_HELP_STRING(
+		[--enable-warnings],
+		[Turn on C++ compilation warnings (default=no)]),
+	[ case "$enableval" in
+		yes)	enable_warnings=yes ;;
+		no)	enable_warnings=no  ;;
+		*)	AC_MSG_ERROR([bad value '$enableval' for --enable-warnings]) ;;
+	  esac
+	],
+	[enable_warnings=no]
+)
+AM_CONDITIONAL(WARNINGS, test "$enable_warnings" = "yes")
+AC_MSG_CHECKING(whether to turn on C++ compilation warnings)
+AC_MSG_RESULT($enable_warnings)
 
-CXXFLAGS=		# disable make's default values
+##### Programs
 
 AC_PROG_CC
 AC_PROG_CXX
@@ -102,7 +100,7 @@ AM_PROG_LIBTOOL
 if test "$enable_doc" = "yes"; then
 	AC_CHECK_PROG(x_doxygen, doxygen, yes, no)
 	if test "$x_doxygen" = "no"; then
-		AC_MSG_ERROR(['doxygen' not found. You will not be able to generate code documentation])
+		AC_MSG_WARN(['doxygen' not found. You will not be able to generate code documentation])
 		enable_doc=no
 	fi
 fi
