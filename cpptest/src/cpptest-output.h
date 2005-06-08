@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: cpptest-output.h,v 1.4 2005/06/08 08:08:06 nilu Exp $
+// $Id: cpptest-output.h,v 1.5 2005/06/08 09:25:09 nilu Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -57,7 +57,7 @@ namespace Test
 		///
 		/// \param tests Total number of tests in all suites.
 		///
-		virtual void initialize(int /*tests*/) {}
+		virtual void initialize(int tests) {}
 		
 		/// Called when testing is finished.
 		///
