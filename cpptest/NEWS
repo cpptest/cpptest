@@ -1,4 +1,19 @@
 
+Release 1.0.3 -- June 8 2005
+----------------------------
+This is a maintenance release concerning the configuration tools only.
+The library itself is not affected. 
+
+- Converted files from DOS format to UNIX format.
+- Updated the configuration file for Doxygen 
+- Removed some Doxygen related warnings
+- 'configure.ac' changes
+  - Changed '--enable-doc' to be set to 'no' by default.
+  - Changed Doxygen program checking so that a missing program does not abort 
+    the configuration process.
+  - Removed '--enabled-debug'.
+  - Added '--enable-warnings'.
+
 Release 1.0.2 -- July 8 2004
 ----------------------------
 - Added Microsoft VisualStudio.NET projects files. They have been present
