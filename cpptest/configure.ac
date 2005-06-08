@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.3 2004/07/08 12:19:21 nilu Exp $
+## $Id: configure.ac,v 1.4 2005/06/08 08:08:06 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
