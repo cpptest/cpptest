@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: autogen.sh,v 1.2 2004/02/04 21:08:23 nilu Exp $
+# $Id: autogen.sh,v 1.3 2005/06/09 20:53:14 nilu Exp $
 #
 # CppTest - A C++ Unit Testing Framework
 # Copyright (c) 2003 Niklas Lundell
@@ -24,18 +24,45 @@
 #
 # ---
 
+# --- Initialization of libtool
+
 echo "Creating library tools..."
-libtoolize --automake --copy
+libtoolize --automake --copy --force
+
+# --- Creation of 'aclocal.m4'
 
 echo "Creating macros..."
-aclocal
+if uname | grep FreeBSD > /dev/null; then
+
+	# FreeBSD systems seems to place libtool's M4 macro files in a 
+	# generic aclocal path, instead of in each version specific 
+	# aclocal path. When executing 'aclocal19', the search path
+	# will be '/usr/local/share/aclocal19/', but the necessary files
+	# are located in '/usr/local/share/aclocal/'. So...
+
+	aclocal_flags='-I /usr/local/share/aclocal'
+fi
+
+# The autotools are not backwards compatible with previous releases. 
+# Therefore, it often outputs non-important warnings that will be 
+# ignore and suppressed.
+#
+aclocal $aclocal_flags 2>&1 \
+	| grep -v 'warning: underquoted definition of' \
+	| grep -v 'Extending-aclocal'
+
+# --- Initialization of automake
 
 echo "Creating Makefile templates..."
 touch README
 automake --gnu --add-missing --copy
 
+# --- Initialization of autoconf
+
 echo "Creating 'configure'..."
 autoconf
 
-echo -e "\nRun: ./configure; make; make install\n"
+# --- Finished...
+
+echo -e "\nRun: ./configure [OPTIONS]; make; make install\n"
 
