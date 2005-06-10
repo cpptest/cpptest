@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: autogen.sh,v 1.3 2005/06/09 20:53:14 nilu Exp $
+# $Id: autogen.sh,v 1.4 2005/06/10 13:25:23 nilu Exp $
 #
 # CppTest - A C++ Unit Testing Framework
 # Copyright (c) 2003 Niklas Lundell
@@ -49,7 +49,7 @@ fi
 #
 aclocal $aclocal_flags 2>&1 \
 	| grep -v 'warning: underquoted definition of' \
-	| grep -v 'Extending-aclocal'
+	| grep -v 'Extending.aclocal' 
 
 # --- Initialization of automake
 
