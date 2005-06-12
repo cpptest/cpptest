@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.5 2005/06/08 09:27:00 nilu Exp $
+## $Id: Makefile.am,v 1.6 2005/06/12 20:28:27 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -40,17 +40,19 @@ EXTRA_DIST = \
 
 if DOC
 
-htmldir 	= $(pkgdatadir)/html
-html_DATA 	= html/index.html
+htmldir= 	$(pkgdatadir)/html
+html_DATA= 	html/index.html
 
-all-local:
+IMAGES=		images/*.html images/*.png
+
+all:
 	doxygen
-	cp -dpR images/* html/
+	cp -p $(IMAGES) html/
 
 html/index.html:
 
 install-data-hook:
-	cp -dpR html/* $(DESTDIR)$(htmldir)
+	cp -p $(IMAGES) $(DESTDIR)$(htmldir)
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(htmldir)
@@ -70,8 +72,11 @@ MAINTAINERCLEANFILES = \
 
 else
 
+all:
+
 install-data-hook:
 
-endif # if DOC
+uninstall-local:
 
+endif # if DOC
 
