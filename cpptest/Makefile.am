@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.5 2005/06/08 09:27:00 nilu Exp $
+## $Id: Makefile.am,v 1.6 2005/06/15 18:21:09 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -24,7 +24,10 @@
 ##
 ## ---
 
-SUBDIRS = src test doc
+SUBDIRS = src test
+if DOC
+SUBDIRS += doc
+endif
 
 ####### Distribution
 

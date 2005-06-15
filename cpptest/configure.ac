@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.6 2005/06/12 20:27:15 nilu Exp $
+## $Id: configure.ac,v 1.7 2005/06/15 18:21:10 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -65,6 +65,7 @@ AC_ARG_ENABLE(
 	],
 	[enable_doc=no]
 )
+AM_CONDITIONAL(DOC, test "$enable_doc" = "yes")
 AC_MSG_CHECKING(whether to generate documentation)
 AC_MSG_RESULT($enable_doc)
 
@@ -103,7 +104,6 @@ if test "$enable_doc" = "yes"; then
 		enable_doc=no
 	fi
 fi
-AM_CONDITIONAL(DOC, test "$enable_doc" = "yes")
 
 ##### Libraries
 

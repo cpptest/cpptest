@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.6 2005/06/12 20:28:27 nilu Exp $
+## $Id: Makefile.am,v 1.7 2005/06/15 18:21:10 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -38,8 +38,6 @@ EXTRA_DIST = \
 	images/screenshot-text-terse.png \
 	images/screenshot-text-verbose.png
 
-if DOC
-
 htmldir= 	$(pkgdatadir)/html
 html_DATA= 	html/index.html
 
@@ -69,14 +67,4 @@ DISTCLEANFILES = \
 	
 MAINTAINERCLEANFILES = \
 	Makefile.in
-
-else
-
-all:
-
-install-data-hook:
-
-uninstall-local:
-
-endif # if DOC
 
