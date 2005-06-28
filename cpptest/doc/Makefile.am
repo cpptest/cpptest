@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.7 2005/06/15 18:21:10 nilu Exp $
+## $Id: Makefile.am,v 1.8 2005/06/28 12:10:45 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -33,6 +33,7 @@ doc_input = \
 	
 EXTRA_DIST = \
 	$(doc_input) \
+	Doxyfile \
 	images/html-example.html \
 	images/screenshot-compiler.png \
 	images/screenshot-text-terse.png \
