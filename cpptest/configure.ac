@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.7 2005/06/15 18:21:10 nilu Exp $
+## $Id: configure.ac,v 1.8 2007/12/12 19:15:32 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -28,7 +28,7 @@
 
 AC_PREREQ(2.53)
 
-AC_INIT(CppTest, 1.0.3, nilu@users.sourceforge.net, cpptest)
+AC_INIT(CppTest, 1.0.4, nilu@users.sourceforge.net, cpptest)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
 
@@ -44,7 +44,7 @@ AM_CONFIG_HEADER(config/config.h)
 #
 # current:revision:age
 #
-LT_VERSION=0:3:0
+LT_VERSION=0:4:0
 AC_SUBST(LT_VERSION, $LT_VERSION)
 
 ##### Alternatives
@@ -130,7 +130,7 @@ fi
 ##### Output
 
 AC_CONFIG_FILES([config/stamp-h], [echo timestamp > config/stamp-h])
-AC_CONFIG_FILES([doc/Doxyfile INSTALL.quick README])
+AC_CONFIG_FILES([doc/Doxyfile INSTALL.quick libcpptest.pc README])
 AC_CONFIG_FILES([Makefile doc/Makefile src/Makefile test/Makefile])
 AC_OUTPUT
 

@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.6 2005/06/15 18:21:09 nilu Exp $
+## $Id: Makefile.am,v 1.7 2007/12/12 19:15:32 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -36,6 +36,7 @@ EXTRA_DIST = \
 	BUGS \
 	config/stamp-h.in \
 	INSTALL.quick \
+	libcpptest.pc \
 	README \
 	win/config.h \
 	win/VisualStudio.NET/VisualStudio.NET.sln \
@@ -52,6 +53,7 @@ DISTCLEANFILES = \
 	config/config.h \
 	config/stamp-h? \
 	INSTALL.quick \
+	libcpptest.pc \
 	README \
 	Makefile
 	

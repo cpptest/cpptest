@@ -34,6 +34,7 @@ The CppTest project uses the following web sites:
 
 CppTest has been successfully tested using the following compilers 
 and platforms:
+- GCC 4.2.3 (using Debian Etch)
 - GCC 3.2 (using RedHat Linux 8.0/9)
 - GCC 3.3.1 (under cygwin)
 - Microsoft Visual C++ 6.0/7.0/7.1 (using Windows)

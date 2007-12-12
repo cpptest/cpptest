@@ -1,4 +1,10 @@
 
+Release 1.0.4 -- December 12 2008
+---------------------------------
+Added a pkg-config file. The pkg-config program is used to retrieve 
+information about installed libraries in the system. It is typically 
+used to compile and link against one or more libraries.
+
 Release 1.0.3 -- June 8 2005
 ----------------------------
 This is a maintenance release concerning the configuration tools only.
