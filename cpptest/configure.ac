@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.8 2007/12/12 19:15:32 nilu Exp $
+## $Id: configure.ac,v 1.9 2008/01/15 20:14:28 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -128,6 +128,8 @@ if test "$round" = "yes"; then
 fi
 
 ##### Output
+
+AC_SUBST(prefix)
 
 AC_CONFIG_FILES([config/stamp-h], [echo timestamp > config/stamp-h])
 AC_CONFIG_FILES([doc/Doxyfile INSTALL.quick libcpptest.pc README])

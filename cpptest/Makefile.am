@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.7 2007/12/12 19:15:32 nilu Exp $
+## $Id: Makefile.am,v 1.8 2008/01/15 20:14:28 nilu Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -70,4 +70,7 @@ MAINTAINERCLEANFILES = \
 	config/missing \
 	config/mkinstalldirs \
 	Makefile.in
+
+install-data-local:
+	cp libcpptest.pc /usr/lib/pkgconfig/
 
