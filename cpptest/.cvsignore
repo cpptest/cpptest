@@ -8,4 +8,5 @@ README
 Makefile.in
 Makefile
 INSTALL.quick
+libcpptest.pc
 
