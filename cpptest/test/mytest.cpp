@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: mytest.cpp,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: mytest.cpp,v 1.4 2008/01/17 20:15:04 nilu Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -223,7 +223,8 @@ main(int argc, char* argv[])
 	catch (...)
 	{
 		cout << "unexpected exception encountered\n";
+		return EXIT_FAILURE;
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }
 
