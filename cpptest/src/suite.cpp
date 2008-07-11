@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: suite.cpp,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: suite.cpp,v 1.4 2008/07/11 13:02:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -201,8 +201,20 @@ namespace Test
 		_output->suite_end(_tests.size(), _name, total_time(false));
 
 		for_each(_suites.begin(), _suites.end(), DoRun(_output, _continue));
+
+		// FIXME Find a cleaner way
+		Suites::const_iterator iter = _suites.begin();
+		while (iter != _suites.end())
+		{
+			if (!(*iter)->_success)
+			{
+				_success = false;
+				break;
+			}
+			iter++;
+		}
 	}
-	
+
 	// Functor to count all tests in a suite.
 	//
 	struct Suite::SubSuiteTests

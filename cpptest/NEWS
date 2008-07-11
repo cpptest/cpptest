@@ -2,7 +2,8 @@ TODO
 --------------------------------
 TODO
 
-- Fix unused parameter warnings in cpptest-output.h
+- Fix bug not propagating nested suite failure upwards (#1719029)
+- Fix unused parameter warnings in cpptest-output.h (#2005194)
 - Disable '-Wno-unused-parameter' when configuring with '--enabled-warnings'
 
 Release 1.0.5 -- February 4 2008
