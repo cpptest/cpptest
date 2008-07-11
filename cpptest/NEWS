@@ -3,6 +3,7 @@ TODO
 TODO
 
 - Fix bug not propagating nested suite failure upwards (#1719029)
+- Fix round issue claiming 100% instead of 99% (#1375372)
 - Fix unused parameter warnings in cpptest-output.h (#2005194)
 - Disable '-Wno-unused-parameter' when configuring with '--enabled-warnings'
 

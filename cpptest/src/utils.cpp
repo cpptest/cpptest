@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: utils.cpp,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: utils.cpp,v 1.4 2008/07/11 14:04:10 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -29,11 +29,6 @@
 #include "missing.h"
 #include "utils.h"
 
-#ifdef HAVE_ROUND
-	#include <cmath>
-	using namespace std;
-#endif
-
 namespace Test
 {	
 	// Computes the procentage of correct tests.
@@ -41,8 +36,10 @@ namespace Test
 	int
 	correct(int tests, int errors)
 	{
-		return static_cast<int>(
-			round((static_cast<double>(tests - errors) / tests) * 100.0));
+		if ((errors == 0) || (tests == 0))
+			return 100;
+
+		return (tests - errors) * 100 / tests;
 	}
 
 } // namespace Test
