@@ -1,3 +1,10 @@
+TODO
+--------------------------------
+TODO
+
+- Fix unused parameter warnings in cpptest-output.h
+- Disable '-Wno-unused-parameter' when configuring with '--enabled-warnings'
+
 Release 1.0.5 -- February 4 2008
 --------------------------------
 Maintenance release. Added a more flexible way of handling the 

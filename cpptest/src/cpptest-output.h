@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: cpptest-output.h,v 1.5 2005/06/08 09:25:09 nilu Exp $
+// $Id: cpptest-output.h,v 1.6 2008/07/11 12:36:32 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -31,6 +31,8 @@
 
 #include <string>
 
+#define CPPTEST_UNUSED(x) (void)x
+
 namespace Test
 {
 	class Source;
@@ -57,21 +59,32 @@ namespace Test
 		///
 		/// \param tests Total number of tests in all suites.
 		///
-		virtual void initialize(int tests) {}
+		virtual void initialize(int tests)
+		{
+			CPPTEST_UNUSED(tests);
+		}
 		
 		/// Called when testing is finished.
 		///
 		/// \param tests Total number of tests in all suites.
 		/// \param time  Total elapsed time for all tests.
 		///
-		virtual void finished(int tests, const Time& time) {}
+		virtual void finished(int tests, const Time& time)
+		{
+			CPPTEST_UNUSED(tests);
+			CPPTEST_UNUSED(time);
+		}
 
 		/// Called when a suite is entered.
 		///
 		/// \param tests Number of tests in this suite.
 		/// \param name  Name of the suite.
 		///
-		virtual void suite_start(int tests, const std::string& name) {}
+		virtual void suite_start(int tests, const std::string& name)
+		{
+			CPPTEST_UNUSED(tests);
+			CPPTEST_UNUSED(name);
+		}
 		
 		/// Called when a suite is finished.
 		///
@@ -80,13 +93,21 @@ namespace Test
 		/// \param time  Total elapsed time for all tests in this suite.
 		///
 		virtual void suite_end(int tests, const std::string& name,
-							   const Time& time) {}
+							   const Time& time)
+		{
+			CPPTEST_UNUSED(tests);
+			CPPTEST_UNUSED(name);
+			CPPTEST_UNUSED(time);
+		}
 		
 		/// Called when a tests is executed.
 		///
 		/// \param name Name of the test function.
 		///
-		virtual void test_start(const std::string& name) {}
+		virtual void test_start(const std::string& name)
+		{
+			CPPTEST_UNUSED(name);
+		}
 		
 		/// Called when a test if finished, regardless if an assertment was
 		/// issued.
@@ -96,13 +117,21 @@ namespace Test
 		/// \param time  Execution time.
 		///
 		virtual void test_end(const std::string& name, bool ok,
-							  const Time& time) {}
+							  const Time& time)
+		{
+			CPPTEST_UNUSED(name);
+			CPPTEST_UNUSED(ok);
+			CPPTEST_UNUSED(time);
+		}
 		
 		/// Called when an assertment is issued.
 		///
 		/// \param s Assert point information.
 		///
-		virtual void assertment(const Source& s) {}
+		virtual void assertment(const Source& s)
+		{
+			CPPTEST_UNUSED(s);
+		}
 
 	protected:
 		/// Empty constructor.
@@ -117,5 +146,3 @@ namespace Test
 } // namespace Test
 	
 #endif // #ifndef CPPTEST_OUTPUT_H
-
-

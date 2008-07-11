@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.3 2005/06/08 08:08:06 nilu Exp $
+## $Id: Makefile.am,v 1.4 2008/07/11 12:36:32 hartwork Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -24,7 +24,14 @@
 ##
 ## ---
 
-AM_CXXFLAGS		= -W -Wall -Wno-unused-parameter
+WARN_FLAGS		=
+if WARNINGS
+WARN_FLAGS		+= -W -Wall
+else
+WARN_FLAGS		+= -Wno-unused-parameter
+endif
+
+AM_CXXFLAGS		= $(WARN_FLAGS) 
 
 noinst_PROGRAMS		= mytest
 
