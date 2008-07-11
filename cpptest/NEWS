@@ -4,6 +4,8 @@ TODO
 
 - Fix bug not propagating nested suite failure upwards (#1719029)
 - Fix round issue claiming 100% instead of 99% (#1375372)
+- Now catch exceptions from test cases and evaluate the originating test as
+  error (#1291742)
 - Fix unused parameter warnings in cpptest-output.h (#2005194)
 - Disable '-Wno-unused-parameter' when configuring with '--enabled-warnings'
 

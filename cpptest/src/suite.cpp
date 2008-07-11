@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: suite.cpp,v 1.4 2008/07/11 13:02:31 hartwork Exp $
+// $Id: suite.cpp,v 1.5 2008/07/11 14:39:34 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -168,7 +168,13 @@ namespace Test
 			
 			_suite.setup();
 			Time start(Time::current());
-			(_suite.*data._func)();
+			// FIXME Also feedback exception to user
+			try
+			{
+				(_suite.*data._func)();
+			} catch (...) {
+				_suite._result = false;
+			}
 			Time end(Time::current());
 			_suite.tear_down();
 			
