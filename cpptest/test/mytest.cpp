@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: mytest.cpp,v 1.4 2008/01/17 20:15:04 nilu Exp $
+// $Id: mytest.cpp,v 1.5 2008/07/11 16:49:43 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -213,12 +213,11 @@ main(int argc, char* argv[])
 		// Run the tests
 		//
 		auto_ptr<Test::Output> output(cmdline(argc, argv));
-		if (ts.run(*output, true))
-		{
-			Test::HtmlOutput* html = dynamic_cast<Test::HtmlOutput*>(output.get());
-			if (html)
-				html->generate(cout, true, "MyTest");
-		}
+		ts.run(*output, true);
+
+		Test::HtmlOutput* const html = dynamic_cast<Test::HtmlOutput*>(output.get());
+		if (html)
+			html->generate(cout, true, "MyTest");
 	}
 	catch (...)
 	{
