@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: configure.ac,v 1.10 2008/01/15 21:12:39 nilu Exp $
+## $Id: configure.ac,v 1.11 2008/07/13 18:28:10 hartwork Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -75,7 +75,7 @@ AC_ARG_ENABLE(
 	warnings,
 	AC_HELP_STRING(
 		[--enable-warnings],
-		[Turn on C++ compilation warnings (default=no)]),
+		[Turn on additional compiler warnings (g++ only) (default=no)]),
 	[ case "$enableval" in
 		yes)	enable_warnings=yes ;;
 		no)	enable_warnings=no  ;;

@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.4 2008/07/11 12:36:32 hartwork Exp $
+## $Id: Makefile.am,v 1.5 2008/07/13 18:28:11 hartwork Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -27,8 +27,6 @@
 WARN_FLAGS		=
 if WARNINGS
 WARN_FLAGS		+= -W -Wall
-else
-WARN_FLAGS		+= -Wno-unused-parameter
 endif
 
 AM_CXXFLAGS		= $(WARN_FLAGS) 

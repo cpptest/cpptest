@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: htmloutput.cpp,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: htmloutput.cpp,v 1.4 2008/07/13 18:28:10 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -38,23 +38,45 @@ namespace Test
 	namespace
 	{
 		void
+		strreplace(string &value, char search, const string &replace)
+		{
+			string::size_type idx = 0;
+			while((idx = value.find(search, idx)) != string::npos)
+			{
+				value.replace(idx, 1, replace);
+				idx += replace.size();
+			}
+		}
+
+		string
+		escape(string value)
+		{
+			strreplace(value, '&', "&amp;");
+			strreplace(value, '<', "&lt;");
+			strreplace(value, '>', "&gt;");
+			strreplace(value, '"', "&quot;");
+			strreplace(value, '\'', "&#39;");
+			return value;
+		}
+
+		void
 		header(ostream& os, string name)
 		{
 			if (!name.empty())
 				name += " ";
-			
+			name = escape(name);
 			os <<
-				"<!doctype doctype public \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n"
+				"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
 				"<html>\n"
 				"<head>\n"
-				"  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n"
-				"  <meta name=\"generator\" content=\"CppTest - http://cpptest.sourceforge.net\">\n"
+				"  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n"
+				"  <meta name=\"generator\" content=\"CppTest - http://cpptest.sourceforge.net\" />\n"
 				"  \n"
 				"  <title>" << name << "Unit Tests Results</title>\n"
 				"  \n"
 				"  <style type=\"text/css\" media=\"screen\">\n"
 				"    <!--\n"
-				"    HR  {\n"
+				"    hr  {\n"
 				"      width: 100%;\n"
 				"      border-width: 0px;\n"
 				"      height: 1px;\n"
@@ -63,19 +85,53 @@ namespace Test
 				"      padding: 0px;\n"
 				"    }\n"
 				"    \n"
-				"    .table_title {\n"
+				"    table {\n"
+				"      table-layout:fixed;\n"
+				"      width:100%;\n"
+				"      border-collapse:collapse;\n"
+				"      border-spacing: 0px;\n"
+				"      border:0px;\n"
+				"    }\n"
+				"    td, tr {\n"
+				"      margin:0px;\n"
+				"      padding:0px;\n"
+				"    }\n"
+				"    .table_summary {\n"
+				"    }\n"
+				"    .table_suites {\n"
+				"    }\n"
+				"    .table_suite {\n"
+				"    }\n"
+				"    .table_result {\n"
+				"      margin: 0px 0px 1em 0px;\n"
+				"    }\n"
+				"    .tablecell_title {\n"
+				"      margin:1px;\n"
+				"      padding:1px;\n"
 				"      background-color: #a5cef7;\n"
 				"      font-weight: bold;\n"
 				"    }\n"
 				"    \n"
-				"    .table_success {\n"
+				"    .tablecell_success {\n"
+				"      margin:1px;\n"
+				"      padding:1px;\n"
 				"      background-color: #efefe7;\n"
 				"    }\n"
 				"    \n"
-				"    .table_error {\n"
+				"    .tablecell_error {\n"
+				"      margin:1px;\n"
+				"      padding:1px;\n"
 				"      color: #ff0808;\n"
 				"      background-color: #efefe7;\n"
 				"      font-weight: bold;\n"
+				"    }\n"
+				"    p.spaced {\n"
+				"      margin: 0px;\n"
+				"      padding: 1em 0px 2em 0px;\n"
+				"    }\n"
+				"    p.unspaced {\n"
+				"      margin: 0px;\n"
+				"      padding: 0px 0px 2em 0px;\n"
 				"    }\n"
 				"    -->\n"
 				"  </style>\n"
@@ -85,10 +141,10 @@ namespace Test
 				"\n"
 				"<h1><a name=\"top\"></a>" << name << "Unit Tests Results</h1>\n"
 				"\n"
-				"<div align=\"right\">\n"
+				"<div style=\"text-align:right\">\n"
 				"Designed by <a href=\"http://cpptest.sourceforge.net\">CppTest</a>\n"
 				"</div>\n"
-				"<hr>\n"
+				"<hr />\n"
 				"\n";
 		}
 		
@@ -97,20 +153,13 @@ namespace Test
 		{
 			os << "\n</body>\n</html>\n";
 		}
-		
-		void
-		marker(ostream& os, const string& mark)
-		{
-			os << "<a name=\"" << mark << "\">";
-		}
-		
+
 		void
 		back_ref(ostream& os, const string& ref, bool prepend_newline = true)
 		{
-			if (prepend_newline)
-				os << "<br>\n";
-			os	<< "<a href=\"#" << ref
-				<< "\">Back to " << ref << "</a>\n<br><br>\n";
+
+			os	<< "<p class=\"" << (prepend_newline ? "spaced" : "unspaced") << "\"><a href=\"#" << ref
+				<< "\">Back to " << escape(ref) << "</a>\n</p>\n";
 		}
 		
 		void
@@ -118,13 +167,25 @@ namespace Test
 		{
 			ostringstream h;
 			h << "h" << size;
-			os << "<" << h.str() << ">" << title << "</" << h.str() << ">\n";
+			os << "<" << h.str() << ">" << escape(title) << "</" << h.str() << ">\n";
+		}
+
+		void
+		sub_title(ostream& os, const string& title, int size, const string& mark)
+		{
+			ostringstream h;
+			h << "h" << size;
+			os << "<" << h.str() << "><a name=\"" << mark << "\"></a>" << escape(title) << "</" << h.str() << ">\n";
 		}
 			
+		enum ClassTableType { TableClass_Summary, TableClass_Suites, TableClass_Suite, TableClass_Result };
+
 		void
-		table_header(ostream& os)
+		table_header(ostream& os, ClassTableType type, const string &summary = "")
 		{
-			os << "<table border=\"0\" width=\"100%\">\n";
+			static const char* class_tabletypes[] = { "summary", "suites", "suite", "result" };
+
+			os << "<table summary=\"" << escape(summary) << "\" class=\"table_" << class_tabletypes[type] << "\">\n";
 		}
 		
 		void
@@ -153,14 +214,14 @@ namespace Test
 		{
 			static const char* class_types[] = { "title", "success", "error" };
 			
-			os << "    <td class=\"table_" << class_types[type] << "\"";
+			os << "    <td";
 			if (width)
-				os << "width=\"" << width << "%\"";
+				os << " style=\"width:" << width << "%\"";
 			os << ">";
 			if (!link.empty())
-				os << "<a href=\"#" << link << "\">" << s << "</a>";
+				os << "<p class=\"tablecell_" << class_types[type] << "\"><a href=\"#" << link << "\">" << escape(s) << "</a></p>";
 			else
-				os << s;
+				os << "<p class=\"tablecell_" << class_types[type] << "\">" << escape(s) <<"</p>";
 			os << "</td>\n";	
 		}
 						
@@ -232,9 +293,8 @@ namespace Test
 		{
 			ostringstream ss;
 			
-			marker(_os, si._name);
-			sub_title(_os, "Suite: " + si._name, 3);
-			table_header(_os);
+			sub_title(_os, "Suite: " + si._name, 3, si._name);
+			table_header(_os, TableClass_Suite, "Details for suite " + si._name);
 			  table_tr_header(_os);
 			    table_entry(_os, Title, "Name");
 			    table_entry(_os, Title, "Errors", 10);
@@ -260,7 +320,7 @@ namespace Test
 			
 			ostringstream ss;
 			
-			table_header(_os);
+			table_header(_os, TableClass_Result, "Test Failure");
 			  table_tr_header(_os);
 				table_entry(_os, Title, "Test", TitleSize);
 				table_entry(_os, Success, s.suite() + "::" + s.test());
@@ -275,7 +335,6 @@ namespace Test
 				table_entry(_os, Success, s.message());
 			  table_tr_footer(_os);
 			table_footer(_os);
-			_os << "<br>\n";
 		}
 	};
 	
@@ -291,7 +350,7 @@ namespace Test
 			{
 				const string& suite = ti._sources.front().suite();
 				
-				marker(_os, suite + "_" + ti._name);
+				sub_title(_os, suite + "::" + ti._name, 3, suite + "_" + ti._name);
 				for_each(ti._sources.begin(), ti._sources.end(), TestResult(_os));
 				back_ref(_os, suite, false);
 			}
@@ -329,7 +388,7 @@ namespace Test
 		// Table: Summary
 		//
 		sub_title(os, "Summary", 2);
-		table_header(os);
+		table_header(os, TableClass_Summary, "Summary of test results");
 		  table_tr_header(os);
 		    table_entry(os, Title, "Tests", 30);
 		    table_entry(os, Title, "Errors", 30);
@@ -347,12 +406,12 @@ namespace Test
 		    table_entry(os, type, ss.str(), 10);
 		  table_tr_footer(os);
 		table_footer(os);
-		os << "<hr>\n\n";
+		os << "<hr />\n\n";
 		
 		// Table: Test suites
 		//
 		sub_title(os, "Test suites", 2);
-		table_header(os);
+		table_header(os, TableClass_Suites, "Test Suites");
 		  table_tr_header(os);
 		    table_entry(os, Title, "Name");
 		    table_entry(os, Title, "Tests",   10);
@@ -362,18 +421,18 @@ namespace Test
 		  table_tr_footer(os);
 		  for_each(_suites.begin(), _suites.end(), SuiteRow(os));
 		table_footer(os);
-		os << "<hr>\n\n";
+		os << "<hr />\n\n";
 		
 		// Individual tests tables
 		//
 		for_each(_suites.begin(), _suites.end(), TestSuiteRow(os, incl_ok_tests));
-		os << "<hr>\n\n";
+		os << "<hr />\n\n";
 		
 		// Individual tests result tables
 		//
 		sub_title(os, "Test results", 2);
 		for_each(_suites.begin(), _suites.end(), SuiteTestResult(os));
-		os << "<hr>\n\n";
+		os << "<hr />\n\n";
 		
 		// EOF
 		//
