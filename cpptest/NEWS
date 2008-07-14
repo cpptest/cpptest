@@ -7,7 +7,8 @@ TODO
 - Now catch exceptions from test cases and evaluate the originating test as
   error (#1291742)
 - Fix unused parameter warnings in cpptest-output.h (#2005194)
-- Disable '-Wno-unused-parameter' when configuring with '--enabled-warnings'
+- Remove '-Wno-unused-parameter' compilation flag
+- Now builds with GNU G++ 4.3.1 and Sun C++ 5.9
 
 Release 1.0.5 -- February 4 2008
 --------------------------------
