@@ -1,14 +1,16 @@
-TODO
+TODO 1.1.0?
 --------------------------------
 TODO
 
-- Fix bug not propagating nested suite failure upwards (#1719029)
-- Fix round issue claiming 100% instead of 99% (#1375372)
-- Now catch exceptions from test cases and evaluate the originating test as
-  error (#1291742)
-- Fix unused parameter warnings in cpptest-output.h (#2005194)
-- Remove '-Wno-unused-parameter' compilation flag
-- Now builds with GNU G++ 4.3.1 and Sun C++ 5.9
+- Changed: HTML output handler migrated from 'HTML 4.0 Transitional'
+    to 'XHTML 1.0 Strict'. Thanks for the patch to Robin Patenall.
+- Changed: Exceptions from test cases are now caught. The originating
+    test is evaluated as an error. (#1291742)
+- Fixed: Child suite failure was not propagated upwards. (#1719029)
+- Fixed: '100%' could be reported in spite of failures. (#1375372)
+- Fixed: Now builds with GNU G++ 4.3.1 and Sun C++ 5.9.
+- Fixed: Unused parameter warnings in cpptest-output.h (#2005194)
+- Removed: '-Wno-unused-parameter' compilation flag
 
 Release 1.0.5 -- February 4 2008
 --------------------------------

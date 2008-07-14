@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: htmloutput.cpp,v 1.4 2008/07/13 18:28:10 hartwork Exp $
+// $Id: htmloutput.cpp,v 1.5 2008/07/14 20:23:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -47,7 +47,7 @@ namespace Test
 				idx += replace.size();
 			}
 		}
-
+		
 		string
 		escape(string value)
 		{
@@ -58,7 +58,7 @@ namespace Test
 			strreplace(value, '\'', "&#39;");
 			return value;
 		}
-
+		
 		void
 		header(ostream& os, string name)
 		{
@@ -67,7 +67,7 @@ namespace Test
 			name = escape(name);
 			os <<
 				"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
-				"<html>\n"
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"
 				"<head>\n"
 				"  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n"
 				"  <meta name=\"generator\" content=\"CppTest - http://cpptest.sourceforge.net\" />\n"
@@ -86,7 +86,6 @@ namespace Test
 				"    }\n"
 				"    \n"
 				"    table {\n"
-				"      table-layout:fixed;\n"
 				"      width:100%;\n"
 				"      border-collapse:collapse;\n"
 				"      border-spacing: 0px;\n"
@@ -153,11 +152,11 @@ namespace Test
 		{
 			os << "\n</body>\n</html>\n";
 		}
-
+				
 		void
 		back_ref(ostream& os, const string& ref, bool prepend_newline = true)
 		{
-
+			
 			os	<< "<p class=\"" << (prepend_newline ? "spaced" : "unspaced") << "\"><a href=\"#" << ref
 				<< "\">Back to " << escape(ref) << "</a>\n</p>\n";
 		}
@@ -179,12 +178,12 @@ namespace Test
 		}
 			
 		enum ClassTableType { TableClass_Summary, TableClass_Suites, TableClass_Suite, TableClass_Result };
-
+		
 		void
 		table_header(ostream& os, ClassTableType type, const string &summary = "")
 		{
 			static const char* class_tabletypes[] = { "summary", "suites", "suite", "result" };
-
+			
 			os << "<table summary=\"" << escape(summary) << "\" class=\"table_" << class_tabletypes[type] << "\">\n";
 		}
 		
