@@ -11,6 +11,7 @@ TODO
 - Fixed: Now builds with GNU G++ 4.3.1 and Sun C++ 5.9.
 - Fixed: Unused parameter warnings in cpptest-output.h (#2005194)
 - Removed: '-Wno-unused-parameter' compilation flag
+- Changed: File config.h for Windows renamed to winconfig.h
 
 Release 1.0.5 -- February 4 2008
 --------------------------------
