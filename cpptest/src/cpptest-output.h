@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: cpptest-output.h,v 1.6 2008/07/11 12:36:32 hartwork Exp $
+// $Id: cpptest-output.h,v 1.7 2008/07/15 21:20:26 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -31,7 +31,11 @@
 
 #include <string>
 
-#define CPPTEST_UNUSED(x) (void)x
+#ifdef _MSC_VER
+# define CPPTEST_UNUSED(x)
+#else
+# define CPPTEST_UNUSED(x) (void)x
+#endif
 
 namespace Test
 {
