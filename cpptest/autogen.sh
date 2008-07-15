@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: autogen.sh,v 1.5 2005/06/15 17:34:45 nilu Exp $
+# $Id: autogen.sh,v 1.6 2008/07/15 20:33:31 hartwork Exp $
 #
 # CppTest - A C++ Unit Testing Framework
 # Copyright (c) 2003 Niklas Lundell
@@ -27,7 +27,11 @@
 # --- Initialization of libtool
 
 echo "Creating library tools..."
-libtoolize --automake --copy --force
+LIBTOOLIZE=libtoolize
+if glibtoolize --version &>/dev/null ; then
+	LIBTOOLIZE=glibtoolize
+fi
+${LIBTOOLIZE} --automake --copy --force
 
 # --- Creation of 'aclocal.m4'
 

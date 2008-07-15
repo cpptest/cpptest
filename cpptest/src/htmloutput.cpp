@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: htmloutput.cpp,v 1.6 2008/07/15 19:43:07 hartwork Exp $
+// $Id: htmloutput.cpp,v 1.7 2008/07/15 20:33:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -27,7 +27,12 @@
 #include <algorithm>
 #include <sstream>
 
-#include "config.h"
+#if (defined(__WIN32__) || defined(WIN32))
+# include "winconfig.h"
+#else
+# include "config.h"
+#endif 
+
 #include "cpptest-htmloutput.h"
 #include "utils.h"
 

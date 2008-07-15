@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: config.h,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: winconfig.h,v 1.1 2008/07/15 20:33:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell

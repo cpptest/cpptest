@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: collectoroutput.cpp,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: collectoroutput.cpp,v 1.4 2008/07/15 20:33:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -24,7 +24,12 @@
 //
 // ---
 
-#include "config.h"
+#if (defined(__WIN32__) || defined(WIN32))
+# include "winconfig.h"
+#else
+# include "config.h"
+#endif 
+
 #include "cpptest-collectoroutput.h"
 
 using namespace std;

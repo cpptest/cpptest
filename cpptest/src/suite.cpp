@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: suite.cpp,v 1.5 2008/07/11 14:39:34 hartwork Exp $
+// $Id: suite.cpp,v 1.6 2008/07/15 20:33:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -30,7 +30,12 @@
 #include <functional>
 #include <numeric>
 
-#include "config.h"
+#if (defined(__WIN32__) || defined(WIN32))
+# include "winconfig.h"
+#else
+# include "config.h"
+#endif 
+
 #include "cpptest-output.h"
 #include "cpptest-source.h"
 #include "cpptest-suite.h"

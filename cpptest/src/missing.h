@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: missing.h,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: missing.h,v 1.4 2008/07/15 20:33:31 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -27,7 +27,11 @@
 #ifndef CPPTEST_MISSING_H
 #define CPPTEST_MISSING_H
 
-#include "config.h"
+#if (defined(__WIN32__) || defined(WIN32))
+# include "winconfig.h"
+#else
+# include "config.h"
+#endif 
 
 namespace Test
 {

@@ -1,6 +1,6 @@
 ## ---
 ##
-## $Id: Makefile.am,v 1.9 2008/01/15 21:09:34 nilu Exp $
+## $Id: Makefile.am,v 1.10 2008/07/15 20:33:31 hartwork Exp $
 ##
 ## CppTest - A C++ Unit Testing Framework
 ## Copyright (c) 2003 Niklas Lundell
@@ -38,7 +38,7 @@ EXTRA_DIST = \
 	INSTALL.quick \
 	libcpptest.pc \
 	README \
-	win/config.h \
+	win/winconfig.h \
 	win/VisualStudio.NET/VisualStudio.NET.sln \
 	win/VisualStudio.NET/cpptest/cpptest.vcproj \
 	win/VisualStudio.NET/test/test.vcproj
