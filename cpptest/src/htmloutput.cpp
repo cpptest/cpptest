@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: htmloutput.cpp,v 1.5 2008/07/14 20:23:31 hartwork Exp $
+// $Id: htmloutput.cpp,v 1.6 2008/07/15 19:43:07 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -87,13 +87,17 @@ namespace Test
 				"    \n"
 				"    table {\n"
 				"      width:100%;\n"
-				"      border-collapse:collapse;\n"
-				"      border-spacing: 0px;\n"
+				"      border-collapse:separate;\n"
+				"      border-spacing: 2px;\n"
 				"      border:0px;\n"
 				"    }\n"
-				"    td, tr {\n"
+				"    tr {\n"
 				"      margin:0px;\n"
 				"      padding:0px;\n"
+				"    }\n"
+				"    td {\n"
+				"      margin:0px;\n"
+				"      padding:1px;\n"
 				"    }\n"
 				"    .table_summary {\n"
 				"    }\n"
@@ -105,21 +109,15 @@ namespace Test
 				"      margin: 0px 0px 1em 0px;\n"
 				"    }\n"
 				"    .tablecell_title {\n"
-				"      margin:1px;\n"
-				"      padding:1px;\n"
 				"      background-color: #a5cef7;\n"
 				"      font-weight: bold;\n"
 				"    }\n"
 				"    \n"
 				"    .tablecell_success {\n"
-				"      margin:1px;\n"
-				"      padding:1px;\n"
 				"      background-color: #efefe7;\n"
 				"    }\n"
 				"    \n"
 				"    .tablecell_error {\n"
-				"      margin:1px;\n"
-				"      padding:1px;\n"
 				"      color: #ff0808;\n"
 				"      background-color: #efefe7;\n"
 				"      font-weight: bold;\n"
@@ -150,7 +148,14 @@ namespace Test
 		void
 		footer(ostream& os)
 		{
-			os << "\n</body>\n</html>\n";
+			os <<
+				"\n"
+				"<p>\n"
+				"  <a href=\"http://validator.w3.org/#validate-by-upload\">\n"
+				"    Valid XHTML 1.0 Strict\n"
+				"  </a>\n"
+				"</p>\n"
+				"</body>\n</html>\n";
 		}
 				
 		void
@@ -216,11 +221,10 @@ namespace Test
 			os << "    <td";
 			if (width)
 				os << " style=\"width:" << width << "%\"";
-			os << ">";
 			if (!link.empty())
-				os << "<p class=\"tablecell_" << class_types[type] << "\"><a href=\"#" << link << "\">" << escape(s) << "</a></p>";
+				os << " class=\"tablecell_" << class_types[type] << "\"><a href=\"#" << link << "\">" << escape(s) << "</a>";
 			else
-				os << "<p class=\"tablecell_" << class_types[type] << "\">" << escape(s) <<"</p>";
+				os << " class=\"tablecell_" << class_types[type] << "\">" << escape(s);
 			os << "</td>\n";	
 		}
 						
@@ -429,10 +433,12 @@ namespace Test
 		
 		// Individual tests result tables
 		//
-		sub_title(os, "Test results", 2);
-		for_each(_suites.begin(), _suites.end(), SuiteTestResult(os));
-		os << "<hr />\n\n";
-		
+		if(_total_errors != 0)
+		{
+			sub_title(os, "Test results", 2);
+			for_each(_suites.begin(), _suites.end(), SuiteTestResult(os));
+			os << "<hr />\n\n";
+		}		
 		// EOF
 		//
 		footer(os);
