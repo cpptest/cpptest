@@ -1,7 +1,5 @@
-TODO 1.1.0?
---------------------------------
-TODO
-
+Release 1.1.0 -- July 17 2008
+-----------------------------
 - Changed: HTML output handler migrated from 'HTML 4.0 Transitional'
     to 'XHTML 1.0 Strict'. Thanks for the patch to Robin Patenall.
 - Changed: Exceptions from test cases are now caught. The originating
@@ -12,6 +10,7 @@ TODO
 - Fixed: Unused parameter warnings in cpptest-output.h (#2005194)
 - Removed: '-Wno-unused-parameter' compilation flag
 - Changed: File config.h for Windows renamed to winconfig.h
+- Changed: Soname set to 0:6:0
 
 Release 1.0.5 -- February 4 2008
 --------------------------------
