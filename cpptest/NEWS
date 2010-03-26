@@ -1,9 +1,10 @@
-TODO
------------------------------
+Release 1.1.1 -- March 26 2010
+------------------------------
 - Fixed: Suite no longer successful with uncaught exceptions (#2976484)
     Thanks for the patch to Nate Gallaher.
-- Fixed: Include cpptest-source.h from cpptest-suite.h
+- Fixed: Include cpptest-source.h from cpptest-suite.h (#2968577)
     Thanks for reporting to Dzmitry Liauchuk.
+- Changed: Soname set to 0:7:0
 
 Release 1.1.0 -- July 17 2008
 -----------------------------
