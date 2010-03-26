@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: cpptest-suite.h,v 1.3 2005/06/08 08:08:06 nilu Exp $
+// $Id: cpptest-suite.h,v 1.4 2010/03/26 04:45:14 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -34,6 +34,7 @@
 #include <string>
 
 #include "cpptest-time.h"
+#include "cpptest-source.h"
 
 namespace Test
 {

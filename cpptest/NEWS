@@ -2,6 +2,8 @@ TODO
 -----------------------------
 - Fixed: Suite no longer successful with uncaught exceptions (#2976484)
     Thanks for the patch to Nate Gallaher.
+- Fixed: Include cpptest-source.h from cpptest-suite.h
+    Thanks for reporting to Dzmitry Liauchuk.
 
 Release 1.1.0 -- July 17 2008
 -----------------------------
