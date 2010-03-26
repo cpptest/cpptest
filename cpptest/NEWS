@@ -1,3 +1,8 @@
+TODO
+-----------------------------
+- Fixed: Suite no longer successful with uncaught exceptions (#2976484)
+    Thanks for the patch to Nate Gallaher.
+
 Release 1.1.0 -- July 17 2008
 -----------------------------
 - Changed: HTML output handler migrated from 'HTML 4.0 Transitional'

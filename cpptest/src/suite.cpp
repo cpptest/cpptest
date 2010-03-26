@@ -1,6 +1,6 @@
 // ---
 //
-// $Id: suite.cpp,v 1.6 2008/07/15 20:33:31 hartwork Exp $
+// $Id: suite.cpp,v 1.7 2010/03/26 04:38:25 hartwork Exp $
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
@@ -178,7 +178,7 @@ namespace Test
 			{
 				(_suite.*data._func)();
 			} catch (...) {
-				_suite._result = false;
+				_suite._result = _suite._success = false;
 			}
 			Time end(Time::current());
 			_suite.tear_down();
