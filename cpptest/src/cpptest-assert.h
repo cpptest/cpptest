@@ -29,6 +29,8 @@
 #ifndef CPPTEST_ASSERT_H
 #define CPPTEST_ASSERT_H
 
+#include <sstream>
+
 /// Unconditional failure.
 ///
 /// Used in conjunction with Test::Suite.
@@ -108,6 +110,93 @@
 			assertment(::Test::Source(__FILE__, __LINE__, msg));	\
 			if (!continue_after_failure()) return;					\
 		} 															\
+	}
+
+/// Verify that two expressions are equal, issues an
+/// assertment if it fails.  Requires the output operator (<<)
+/// to be defined for both expected and got.
+///
+/// If the output operator is not available, you should use
+/// TEST_ASSERT_EQUALS_OBJ(expected, got).
+///
+/// Used in conjunction with Test::Suite.
+///
+/// \param expected  Expected value.
+/// \param got       Value to test against expected value.
+///
+/// \see TEST_ASSERT_EQUALS_MSG(expected, got, msg)
+/// \see TEST_ASSERT_EQUALS_OBJ(expected, got)
+///
+/// For a description of all asserts, see \ref asserts.
+///
+#define TEST_ASSERT_EQUALS(expected, got)								\
+	{																	\
+		if (!((got) == (expected)))										\
+		{																\
+			std::stringstream tmpstream;								\
+			tmpstream << "Got " << (got) << ", expected " << (expected);\
+			assertment(::Test::Source(__FILE__, __LINE__,				\
+						tmpstream.str().c_str()));						\
+			if (!continue_after_failure()) return;						\
+		}																\
+	}
+
+/// Verify that two expressions are equal, issues an
+/// assertment if it fails.
+///
+/// If the output operator is defined for the objects being compared
+/// you should use TEST_ASSERT_EQUALS(expected, got) instead for
+/// more useful failure messages.
+///
+/// Used in conjunction with Test::Suite.
+///
+/// \param expected  Expected value.
+/// \param got       Value to test against expected value.
+///
+/// \see TEST_ASSERT_EQUALS(expected, got)
+/// \see TEST_ASSERT_EQUALS_MSG(expected, got, msg)
+///
+/// For a description of all asserts, see \ref asserts.
+///
+#define TEST_ASSERT_EQUALS_OBJ(expected, got)						\
+	{																\
+		if (!((got) == (expected)))									\
+		{															\
+			std::stringstream tmpstream;							\
+			tmpstream << #expected << " object not equal to ";		\
+			tmpstream << #got << " object.";						\
+			assertment(::Test::Source(__FILE__, __LINE__, 			\
+						tmpstream.str().c_str()));					\
+			if (!continue_after_failure()) return;					\
+		}															\
+	}
+
+/// Verify that two expressions are equal, issues an
+/// assertment if it fails.  The output operator (<<) must be defined for the
+/// object under test.  If the output operator is not available, you
+/// should use TEST_ASSERT_EQUALS_OBJ(expected, got) instead.
+///
+/// Used in conjunction with Test::Suite.
+///
+/// \param expected  Expected value.
+/// \param got       Value to test against expected value.
+/// \param msg       User message to print out on failure.
+///
+/// \see TEST_ASSERT_EQUALS(expected, got)
+/// \see TEST_ASSERT_EQUALS_OBJ(expected, got)
+///
+/// For a description of all asserts, see \ref asserts.
+#define TEST_ASSERT_EQUALS_MSG(expected, got, msg)						\
+	{																	\
+		if (!((got) == (expected)))										\
+		{																\
+			std::stringstream tmpstream;								\
+			tmpstream << (msg) << ": ";									\
+			tmpstream << "Got " << (got) << ", expected " << (expected);\
+			assertment(::Test::Source(__FILE__, __LINE__,				\
+						tmpstream.str().c_str()));						\
+			if (!continue_after_failure()) return;						\
+		}																\
 	}
 
 /// Verify that two expressions are equal up to a constant, issues an
@@ -315,6 +404,9 @@
 /// <b>Comparision asserts</b>
 /// - TEST_ASSERT(expr)
 /// - TEST_ASSERT_MSG(expr, msg)
+/// - TEST_ASSERT_EQUALS(expected, got)
+/// - TEST_ASSERT_EQUALS_MSG(expected, got, msg)
+/// - TEST_ASSERT_EQUALS_OBJ(expected, got)
 /// - TEST_ASSERT_DELTA(a, b, delta)
 /// - TEST_ASSERT_DELTA_MSG(a, b, delta, msg)
 ///
