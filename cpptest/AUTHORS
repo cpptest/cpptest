@@ -1,4 +1,5 @@
-Current maintainer
+Current maintainers
+	Nate Gallaher <ngallaher@zoidberg.wp.comcast.net>
 	Sebastian Pipping <sebastian@pipping.org>
 
 Main author:
@@ -8,4 +9,4 @@ Contributors:
 	David Morris - pkg-config and installation patches.
 	Robin Patenall - migration to XHTML 1.0 strict
 	Sebastian Pipping - several bugfixes
-
+	Nate Gallaher - additional assertion macros

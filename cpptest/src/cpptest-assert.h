@@ -4,6 +4,7 @@
 //
 // CppTest - A C++ Unit Testing Framework
 // Copyright (c) 2003 Niklas Lundell
+// Copyright (c) 2010 Nate Gallaher
 //
 // ---
 //
