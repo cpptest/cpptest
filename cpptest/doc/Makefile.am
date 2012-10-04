@@ -39,7 +39,6 @@ EXTRA_DIST = \
 	images/screenshot-text-terse.png \
 	images/screenshot-text-verbose.png
 
-htmldir= 	$(pkgdatadir)/html
 html_DATA= 	html/index.html
 
 IMAGES=		images/*.html images/*.png
