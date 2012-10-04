@@ -28,7 +28,7 @@
 
 AC_PREREQ(2.53)
 
-AC_INIT(CppTest, 1.1.1, nilu@users.sourceforge.net, cpptest)
+AC_INIT(CppTest, 1.1.2, nilu@users.sourceforge.net, cpptest)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
 

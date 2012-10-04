@@ -1,3 +1,11 @@
+Release 1.1.2 -- Octobre 4 2012
+------------------------------
+- Fixed: Use @libdir@ for generation of libcpptest.pc (#3566605)
+    Thanks for the patch to Dagobert Michelsen.
+- Fixed: Respect --htmldir
+    Thanks for the patch to Robert Buchholz.
+- Note: soname remaining at 0:7:0
+
 Release 1.1.1 -- March 26 2010
 ------------------------------
 - Fixed: Suite no longer successful with uncaught exceptions (#2976484)

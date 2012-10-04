@@ -10,3 +10,5 @@ Contributors:
 	Robin Patenall - migration to XHTML 1.0 strict
 	Sebastian Pipping - several bugfixes
 	Nate Gallaher - additional assertion macros
+	Robert Buchholz - build system fixes
+	Dagobert Michelsen - build system fixes
