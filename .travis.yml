@@ -1,0 +1,14 @@
+language: cpp
+
+script:
+  - cd cpptest
+  - ./autogen.sh
+  - ./configure --enable-doc
+  - make
+  - make check
+  - make distcheck
+
+addons:
+  apt:
+    packages:
+    - doxygen
