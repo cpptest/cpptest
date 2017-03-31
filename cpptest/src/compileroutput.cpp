@@ -61,7 +61,7 @@ namespace Test
 	/// \param format Pre-defined compiler output format.
 	/// \param stream Stream to output to.
 	///
-	CompilerOutput::CompilerOutput(Format format, ostream& stream)
+	CompilerOutput::CompilerOutput(Format format, std::ostream& stream)
 	:	Output(),
 		_stream(stream)
 	{
@@ -83,7 +83,7 @@ namespace Test
 	///
 	/// \exception InvalidFormat Invalid format specified.
 	///
-	CompilerOutput::CompilerOutput(const string& format, ostream& stream)
+	CompilerOutput::CompilerOutput(const std::string& format, std::ostream& stream)
 	:	Output(),
 		_format(format),
 		_stream(stream)
