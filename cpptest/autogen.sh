@@ -47,6 +47,9 @@ aclocal $aclocal_flags 2>&1 \
 
 # --- Initialization of automake
 
+echo "Creating config/config.h.in..."
+autoheader
+
 echo "Creating Makefile templates..."
 touch README
 automake --gnu --add-missing --copy
