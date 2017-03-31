@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # $Id: autogen.sh,v 1.6 2008/07/15 20:33:31 hartwork Exp $
 #
