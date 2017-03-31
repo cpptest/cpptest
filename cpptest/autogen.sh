@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # $Id: autogen.sh,v 1.6 2008/07/15 20:33:31 hartwork Exp $
 #
@@ -31,7 +31,7 @@ LIBTOOLIZE=libtoolize
 if glibtoolize --version &>/dev/null ; then
 	LIBTOOLIZE=glibtoolize
 fi
-${LIBTOOLIZE} --automake --copy --force
+${LIBTOOLIZE} --automake --copy --force --verbose
 
 # --- Creation of 'aclocal.m4'
 
@@ -46,6 +46,9 @@ aclocal $aclocal_flags 2>&1 \
 	| grep -v 'Extending%20aclocal' 
 
 # --- Initialization of automake
+
+echo "Creating config/config.h.in..."
+autoheader
 
 echo "Creating Makefile templates..."
 touch README

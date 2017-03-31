@@ -1,0 +1,17 @@
+# Copyright (C) 2017 Sebastian Pipping <sebastian@pipping.org>
+# Licensed under GNU LGPL v2.1 or later
+
+language: cpp
+
+script:
+  - cd cpptest
+  - ./autogen.sh
+  - ./configure --enable-doc
+  - make
+  - make check
+  - make distcheck
+
+addons:
+  apt:
+    packages:
+    - doxygen
