@@ -31,7 +31,7 @@ LIBTOOLIZE=libtoolize
 if glibtoolize --version &>/dev/null ; then
 	LIBTOOLIZE=glibtoolize
 fi
-${LIBTOOLIZE} --automake --copy --force
+${LIBTOOLIZE} --automake --copy --force --verbose
 
 # --- Creation of 'aclocal.m4'
 
