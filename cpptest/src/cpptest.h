@@ -37,6 +37,8 @@
 #include "cpptest-compileroutput.h"
 #include "cpptest-htmloutput.h"
 #include "cpptest-textoutput.h"
+#include "cpptest-simplecollector.h"
+#include "cpptest-xmloutput.h"
 
 #endif // #ifndef CPPTEST_H
 
