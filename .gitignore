@@ -23,3 +23,8 @@
 /Makefile
 /Makefile.in
 /README
+.vs/
+Debug/
+Release/
+*.user
+*.filters
