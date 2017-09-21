@@ -31,9 +31,10 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <fstream>
 
 #ifdef _MSC_VER
-	#pragma warning (disable: 4290)
+#pragma warning (disable: 4290)
 #endif
 
 #include "../src/cpptest.h"
@@ -48,13 +49,13 @@ public:
 	FailTestSuite()
 	{
 		TEST_ADD(FailTestSuite::success)
-		TEST_ADD(FailTestSuite::always_fail)
-	
+			TEST_ADD(FailTestSuite::always_fail)
+
 	}
-	
+
 private:
 	void success() {}
-	
+
 	void always_fail()
 	{
 		// This will always fail
@@ -71,30 +72,30 @@ public:
 	CompareTestSuite()
 	{
 		TEST_ADD(CompareTestSuite::success)
-		TEST_ADD(CompareTestSuite::compare)
-		TEST_ADD(CompareTestSuite::delta_compare)
+			TEST_ADD(CompareTestSuite::compare)
+			TEST_ADD(CompareTestSuite::delta_compare)
 	}
-	
+
 private:
 	void success() {}
-	
+
 	void compare()
 	{
 		// Will succeed since the expression evaluates to true
 		//
 		TEST_ASSERT(1 + 1 == 2)
-		
-		// Will fail since the expression evaluates to false
-		//
-		TEST_ASSERT(0 == 1);
+
+			// Will fail since the expression evaluates to false
+			//
+			TEST_ASSERT(0 == 1);
 	}
-	
+
 	void delta_compare()
 	{
 		// Will succeed since the expression evaluates to true
 		//
 		TEST_ASSERT_DELTA(0.5, 0.7, 0.3);
-		
+
 		// Will fail since the expression evaluates to false
 		//
 		TEST_ASSERT_DELTA(0.5, 0.7, 0.1);
@@ -109,37 +110,37 @@ public:
 	ThrowTestSuite()
 	{
 		TEST_ADD(ThrowTestSuite::success)
-		TEST_ADD(ThrowTestSuite::test_throw)
+			TEST_ADD(ThrowTestSuite::test_throw)
 	}
-	
+
 private:
 	void success() {}
-	
+
 	void test_throw()
 	{
 		// Will fail since the none of the functions throws anything
 		//
 		TEST_THROWS_MSG(func(), int, "func() does not throw, expected int exception")
-		TEST_THROWS_MSG(func_no_throw(), int, "func_no_throw() does not throw, expected int exception")
-		TEST_THROWS_ANYTHING_MSG(func(), "func() does not throw, expected any exception")
-		TEST_THROWS_ANYTHING_MSG(func_no_throw(), "func_no_throw() does not throw, expected any exception")
-		
-		// Will succeed since none of the functions throws anything
-		//
-		TEST_THROWS_NOTHING(func())
-		TEST_THROWS_NOTHING(func_no_throw())
-		
-		// Will succeed since func_throw_int() throws an int
-		//
-		TEST_THROWS(func_throw_int(), int)
-		TEST_THROWS_ANYTHING(func_throw_int())
-		
-		// Will fail since func_throw_int() throws an int (not a float)
-		//
-		TEST_THROWS_MSG(func_throw_int(), float, "func_throw_int() throws an int, expected a float exception")
-		TEST_THROWS_NOTHING_MSG(func_throw_int(), "func_throw_int() throws an int, expected no exception at all")
+			TEST_THROWS_MSG(func_no_throw(), int, "func_no_throw() does not throw, expected int exception")
+			TEST_THROWS_ANYTHING_MSG(func(), "func() does not throw, expected any exception")
+			TEST_THROWS_ANYTHING_MSG(func_no_throw(), "func_no_throw() does not throw, expected any exception")
+
+			// Will succeed since none of the functions throws anything
+			//
+			TEST_THROWS_NOTHING(func())
+			TEST_THROWS_NOTHING(func_no_throw())
+
+			// Will succeed since func_throw_int() throws an int
+			//
+			TEST_THROWS(func_throw_int(), int)
+			TEST_THROWS_ANYTHING(func_throw_int())
+
+			// Will fail since func_throw_int() throws an int (not a float)
+			//
+			TEST_THROWS_MSG(func_throw_int(), float, "func_throw_int() throws an int, expected a float exception")
+			TEST_THROWS_NOTHING_MSG(func_throw_int(), "func_throw_int() throws an int, expected no exception at all")
 	}
-	
+
 	void func() {}
 	void func_no_throw() throw() {}
 	void func_throw_int() throw(int) { throw 13; }
@@ -157,11 +158,11 @@ static void
 usage()
 {
 	cout << "usage: mytest [MODE]\n"
-		 << "where MODE may be one of:\n"
-		 << "  --compiler\n"
-		 << "  --html\n"
-		 << "  --text-terse (default)\n"
-		 << "  --text-verbose\n";
+		<< "where MODE may be one of:\n"
+		<< "  --compiler\n"
+		<< "  --html\n"
+		<< "  --text-terse (default)\n"
+		<< "  --text-verbose\n";
 	exit(0);
 }
 
@@ -170,9 +171,9 @@ cmdline(int argc, char* argv[])
 {
 	if (argc > 2)
 		usage(); // will not return
-	
+
 	Test::Output* output = 0;
-	
+
 	if (argc == 1)
 		output = new Test::TextOutput(Test::TextOutput::Verbose);
 	else
@@ -181,7 +182,7 @@ cmdline(int argc, char* argv[])
 		if (strcmp(arg, "--compiler") == 0)
 			output = new Test::CompilerOutput;
 		else if (strcmp(arg, "--html") == 0)
-			output =  new Test::HtmlOutput;
+			output = new Test::HtmlOutput;
 		else if (strcmp(arg, "--text-terse") == 0)
 			output = new Test::TextOutput(Test::TextOutput::Terse);
 		else if (strcmp(arg, "--text-verbose") == 0)
@@ -192,7 +193,7 @@ cmdline(int argc, char* argv[])
 			usage(); // will not return
 		}
 	}
-	
+
 	return auto_ptr<Test::Output>(output);
 }
 
@@ -203,13 +204,14 @@ main(int argc, char* argv[])
 {
 	try
 	{
+		clock_t real_start_time = clock();
 		// Demonstrates the ability to use multiple test suites
 		//
 		Test::Suite ts;
 		ts.add(auto_ptr<Test::Suite>(new FailTestSuite));
 		ts.add(auto_ptr<Test::Suite>(new CompareTestSuite));
 		ts.add(auto_ptr<Test::Suite>(new ThrowTestSuite));
-
+		/*
 		// Run the tests
 		//
 		auto_ptr<Test::Output> output(cmdline(argc, argv));
@@ -218,6 +220,38 @@ main(int argc, char* argv[])
 		Test::HtmlOutput* const html = dynamic_cast<Test::HtmlOutput*>(output.get());
 		if (html)
 			html->generate(cout, true, "MyTest");
+			*/
+
+
+		bool doConsole = true;//output to console
+		bool doHtml = true;//generate html
+		std::unique_ptr<Test::SimpleLogCollector> output(new Test::SimpleLogCollector(doConsole));
+		ts.run(*output, true);
+
+		std::string strFile = "c:/temp/test_output";//name of the file without extension to write the output to
+
+		if (doHtml)
+		{
+			//writes this out if -html is specified, or no output is specified.
+			std::ofstream os;
+			os.open(strFile + ".html");
+			std::unique_ptr<Test::HtmlOutput> html(new Test::HtmlOutput);
+			output->playTo(*html, Test::SimpleLogCollector::enum_write_all_output);
+			html->generate(os, true, strFile);
+			os.close();
+		}
+
+		bool doXml = true;//generate xml
+		if (doXml)
+		{
+			std::ofstream os;
+			os.open(strFile + ".xml");
+			std::unique_ptr<Test::XMLOutput> xml(new Test::XMLOutput);
+			output->playTo(*xml, Test::SimpleLogCollector::enum_when_failed_write_only_failures);//ensure it fails at 100% if there are failures
+			xml->generate(os, true, strFile, real_start_time);
+			os.close();
+		}
+		/**/
 	}
 	catch (...)
 	{
