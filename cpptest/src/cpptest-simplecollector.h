@@ -21,6 +21,10 @@ This is extension for the test to allow XML output
 #include <memory>
 #include <assert.h>
 
+#if (defined(__WIN32__) || defined(WIN32))
+#include <windows.h>
+#endif
+
 namespace Test
 {
 	class SimpleLogCollector : public Test::Output
@@ -112,9 +116,29 @@ namespace Test
 				source_ = source;
 			}
 		};
+		class dbgview_buffer : public std::stringbuf
+		{
+		public:
+				~dbgview_buffer()
+				{
+					 sync(); // can be avoided
+				}
+ 
+				int sync()
+				{
+#if (defined(__WIN32__) || defined(WIN32))
+						OutputDebugStringA(str().c_str());
+#endif
+						str("");
+						return 0;
+				}
+		};
 		std::list<BaseMessage*> messages_;
 
 		std::unique_ptr<Test::TextOutput> con_;
+		dbgview_buffer dbgbuf_;
+		std::ostream dbgstream_;
+		Test::TextOutput dbg_;//used for output into debug window.
 		std::list<BaseMessage*>::iterator current_suit;
 		std::list<BaseMessage*>::iterator current_test;
 		bool errors_;
@@ -129,12 +153,16 @@ namespace Test
 			if (con_)
 				con_->finished(tests, time);
 
+			dbg_.finished(tests, time);
+
 			messages_.push_back(new FinishedMessage(tests, time));
 		}
 		virtual void suite_start(int tests, const std::string& name)
 		{
 			if (con_)
 				con_->suite_start(tests, name);
+
+			dbg_.suite_start(tests, name);
 
 			messages_.push_back(new SuiteStartMessage(tests, name));
 			current_suit = messages_.end();
@@ -146,6 +174,8 @@ namespace Test
 			if (con_)
 				con_->suite_end(tests, name, time);
 
+			dbg_.suite_end(tests, name, time);
+
 			bool ok = ((SuiteStartMessage*)(*current_suit))->ok_;
 			messages_.push_back(new SuiteEndMessage(tests, name, ok, time));
 		}
@@ -153,6 +183,8 @@ namespace Test
 		{
 			if (con_)
 				con_->test_start(name);
+
+			dbg_.test_start(name);
 
 			messages_.push_back(new TestStartMessage(name));
 			current_test = messages_.end();
@@ -163,6 +195,8 @@ namespace Test
 		{
 			if (con_)
 				con_->test_end(name, ok, time);
+
+			dbg_.test_end(name, ok, time);
 
 			if (!ok)
 			{
@@ -178,6 +212,8 @@ namespace Test
 		{
 			if (con_)
 				con_->assertment(s);
+
+			dbg_.assertment(s);
 
 			messages_.push_back(new AssertmentMessage(s));
 		}
@@ -234,6 +270,8 @@ namespace Test
 		bool has_errors() const { return errors_; }
 
 		SimpleLogCollector(bool writeToConsole)
+			: dbgstream_(&dbgbuf_),
+				dbg_(Test::TextOutput::Verbose, dbgstream_)
 		{
 			if (writeToConsole)
 			{
