@@ -142,6 +142,7 @@ namespace Test
 		std::list<BaseMessage*>::iterator current_suit;
 		std::list<BaseMessage*>::iterator current_test;
 		bool errors_;
+		bool assert_on_assertment_;
 	public:
 		enum Mode
 		{
@@ -214,7 +215,12 @@ namespace Test
 				con_->assertment(s);
 
 			dbg_.assertment(s);
-
+#ifndef NDEBUG
+			if (assert_on_assertment_)
+			{
+				assert(0);
+			}
+#endif
 			messages_.push_back(new AssertmentMessage(s));
 		}
 
@@ -268,6 +274,7 @@ namespace Test
 		}
 
 		bool has_errors() const { return errors_; }
+		void set_assert_on_assertment(bool yesno) { assert_on_assertment_ = yesno; }
 
 		SimpleLogCollector(bool writeToConsole)
 			: dbgstream_(&dbgbuf_),
@@ -279,6 +286,7 @@ namespace Test
 			}
 
 			errors_ = false;
+			assert_on_assertment_ = false;
 		}
 	};
 
