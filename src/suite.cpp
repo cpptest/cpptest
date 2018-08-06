@@ -173,13 +173,19 @@ namespace Test
 			
 			_suite.setup();
 			Time start(Time::current());
-			// FIXME Also feedback exception to user
+
+			bool exception_caught = false;
 			try
 			{
 				(_suite.*data._func)();
 			} catch (...) {
-				_suite._result = _suite._success = false;
+				exception_caught = true;
 			}
+
+			if (exception_caught) {
+				_suite.assertment(::Test::Source("", 0, "exception thrown"));
+			}
+
 			Time end(Time::current());
 			_suite.tear_down();
 			
