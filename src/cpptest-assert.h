@@ -215,7 +215,11 @@
 ///
 #define TEST_ASSERT_DELTA(a, b, delta)								\
 	{																\
-		if (((b) < (a) - (delta)) || ((b) > (a) + (delta)))			\
+		auto a_1231422 = (a);										\
+		auto b_1231422 = (b);										\
+		auto d_1231422 = (delta);									\
+		if (!((b_1231422 >= a_1231422 - d_1231422) &&				\
+			(b_1231422 <= a_1231422 + d_1231422)))					\
 		{															\
 			assertment(::Test::Source(__FILE__, __LINE__, 			\
 					   "delta(" #a ", " #b ", " #delta ")" ));		\
@@ -239,7 +243,11 @@
 ///
 #define TEST_ASSERT_DELTA_MSG(a, b, delta, msg)						\
 	{																\
-		if (((b) < (a) - (delta)) || ((b) > (a) + (delta)))			\
+		auto a_1231422 = (a);										\
+		auto b_1231422 = (b);										\
+		auto d_1231422 = (delta);									\
+		if (!((b_1231422 >= a_1231422 - d_1231422) &&				\
+			(b_1231422 <= a_1231422 + d_1231422)))					\
 		{															\
 			assertment(::Test::Source(__FILE__, __LINE__, msg));	\
 			if (!continue_after_failure()) return;					\
