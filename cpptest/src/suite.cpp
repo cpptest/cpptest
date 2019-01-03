@@ -117,7 +117,7 @@ namespace Test
 	/// \param suite %Test suite to add.
 	///
 	void
-	Suite::add(auto_ptr<Suite> suite)
+	Suite::add(unique_ptr<Suite> suite)
 	{
 		_suites.push_back(suite.release());
 	}

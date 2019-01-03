@@ -166,9 +166,9 @@ class TestSuite3: public Test::Suite { }; // ... with many tests
 bool run_tests()
 {
 	Test::Suite ts;
-	ts.add(auto_ptr<Test::Suite>(new TestSuite1));
-	ts.add(auto_ptr<Test::Suite>(new TestSuite2));
-	ts.add(auto_ptr<Test::Suite>(new TestSuite3));
+	ts.add(unique_ptr<Test::Suite>(new TestSuite1));
+	ts.add(unique_ptr<Test::Suite>(new TestSuite2));
+	ts.add(unique_ptr<Test::Suite>(new TestSuite3));
 	
 	Test::TextOutput output(Test::TextOutput::Verbose);
 	return ts.run(output);
