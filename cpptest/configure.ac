@@ -26,9 +26,9 @@
 
 ##### Boilerplate
 
-AC_PREREQ(2.53)
+AC_PREREQ([2.69])
 
-AC_INIT(CppTest, 1.1.2, nilu@users.sourceforge.net, cpptest)
+AC_INIT([CppTest],[1.1.2],[nilu@users.sourceforge.net],[cpptest])
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
@@ -55,9 +55,7 @@ AC_SUBST(LT_VERSION, $LT_VERSION)
 #
 AC_ARG_ENABLE(
 	doc,
-	AC_HELP_STRING(
-		[--enable-doc],
-		[Generate documentation (default=no)]),
+	AS_HELP_STRING([--enable-doc],[Generate documentation (default=no)]),
 	[ case "$enableval" in
 		yes)	enable_doc=yes ;;
 		no)	enable_doc=no  ;;
@@ -74,9 +72,7 @@ AC_MSG_RESULT($enable_doc)
 #
 AC_ARG_ENABLE(
 	warnings,
-	AC_HELP_STRING(
-		[--enable-warnings],
-		[Turn on additional compiler warnings (g++ only) (default=no)]),
+	AS_HELP_STRING([--enable-warnings],[Turn on additional compiler warnings (g++ only) (default=no)]),
 	[ case "$enableval" in
 		yes)	enable_warnings=yes ;;
 		no)	enable_warnings=no  ;;
@@ -96,7 +92,7 @@ AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
-AM_PROG_LIBTOOL
+LT_INIT
 
 if test "$enable_doc" = "yes"; then
 	AC_CHECK_PROG(x_doxygen, doxygen, yes, no)
@@ -119,10 +115,7 @@ AC_CHECK_HEADERS(sys/time.h)
 AC_CHECK_FUNCS([gettimeofday])
 
 AC_MSG_CHECKING(for round)
-AC_TRY_COMPILE(
-	[ #include <math.h> ],
-	[ double d = round(1.0); ],
-	[ round=yes ],[ round=no ])
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <math.h> ]], [[ double d = round(1.0); ]])],[ round=yes ],[ round=no ])
 AC_MSG_RESULT($round)
 if test "$round" = "yes"; then
 	AC_DEFINE([HAVE_ROUND],,[Defined if the function exists])
