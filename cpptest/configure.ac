@@ -34,7 +34,7 @@ AC_CONFIG_MACRO_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
 
 AM_INIT_AUTOMAKE([1.8 gnu dist-zip])
-AM_CONFIG_HEADER(config/config.h)
+AC_CONFIG_HEADERS([config/config.h])
 
 AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
 
