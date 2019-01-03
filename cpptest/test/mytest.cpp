@@ -141,8 +141,8 @@ private:
 	}
 	
 	void func() {}
-	void func_no_throw() throw() {}
-	void func_throw_int() throw(int) { throw 13; }
+	void func_no_throw() {}
+	void func_throw_int() { throw 13; }
 };
 
 enum OutputType
