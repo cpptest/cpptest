@@ -48,7 +48,7 @@ AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
 #
 # current:revision:age
 #
-LT_VERSION=0:7:0
+LT_VERSION=1:8:0
 AC_SUBST(LT_VERSION, $LT_VERSION)
 
 ##### Alternatives
