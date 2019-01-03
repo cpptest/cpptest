@@ -36,6 +36,9 @@ AC_CONFIG_SRCDIR(autogen.sh)
 AM_INIT_AUTOMAKE([1.8 gnu dist-zip])
 AM_CONFIG_HEADER(config/config.h)
 
+AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
+
+
 # LibTool versioning
 #
 # +1 : ? : +1 => new interface that does not break old one
