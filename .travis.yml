@@ -25,6 +25,8 @@ script:
         CXX=clang++-7
         CXXFLAGS="${CXXFLAGS}"
         LDFLAGS='-g -fsanitize=address'
+
+        --enable-doc
     )
     && ./configure "${configure_args[@]}"  # -Werror would fail configure checks!
   - make CXXFLAGS="${CXXFLAGS} -Werror" all
