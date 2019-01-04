@@ -27,10 +27,8 @@
 doc_input = \
 	main.dox \
 	test.dox \
-	tutorial.dox \
-	header.html \
-	footer.html
-	
+	tutorial.dox
+
 EXTRA_DIST = \
 	$(doc_input) \
 	Doxyfile \
