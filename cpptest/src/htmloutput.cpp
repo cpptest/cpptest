@@ -75,7 +75,7 @@ namespace Test
 				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"
 				"<head>\n"
 				"  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n"
-				"  <meta name=\"generator\" content=\"CppTest - http://cpptest.sourceforge.net\" />\n"
+				"  <meta name=\"generator\" content=\"CppTest - https://github.com/cpptest/cpptest\" />\n"
 				"  \n"
 				"  <title>" << name << "Unit Tests Results</title>\n"
 				"  \n"
@@ -144,7 +144,7 @@ namespace Test
 				"<h1><a name=\"top\"></a>" << name << "Unit Tests Results</h1>\n"
 				"\n"
 				"<div style=\"text-align:right\">\n"
-				"Designed by <a href=\"http://cpptest.sourceforge.net\">CppTest</a>\n"
+				"Designed by <a href=\"https://github.com/cpptest/cpptest\">CppTest</a>\n"
 				"</div>\n"
 				"<hr />\n"
 				"\n";

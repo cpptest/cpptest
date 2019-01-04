@@ -25,10 +25,10 @@ The latest release may always be found on the project page, see below.
 \section main_web_sites Web sites
 
 The CppTest project uses the following web sites:
-- Home page: <a href="http://cpptest.sourceforge.net/">
-  http://cpptest.sourceforge.net/</a>
-- Project page: <a href="http://sourceforge.net/projects/cpptest/">
-  http://sourceforge.net/projects/cpptest/</a>
+- GitHub project page: <a href="https://github.com/cpptest/cpptest">
+  https://github.com/cpptest/cpptest</a>
+- (Old SourceForge project page: <a href="https://sourceforge.net/projects/cpptest/">
+  https://sourceforge.net/projects/cpptest/</a>)
 
 \section main_portability Portability
 
