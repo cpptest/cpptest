@@ -25,30 +25,29 @@ The latest release may always be found on the project page, see below.
 \section main_web_sites Web sites
 
 The CppTest project uses the following web sites:
-- Home page: <a href="http://cpptest.sourceforge.net/">
-  http://cpptest.sourceforge.net/</a>
-- Project page: <a href="http://sourceforge.net/projects/cpptest/">
-  http://sourceforge.net/projects/cpptest/</a>
+- GitHub project page: <a href="https://github.com/cpptest/cpptest">
+  https://github.com/cpptest/cpptest</a>
+- (Old SourceForge project page: <a href="https://sourceforge.net/projects/cpptest/">
+  https://sourceforge.net/projects/cpptest/</a>)
 
 \section main_portability Portability
 
 CppTest has been successfully tested using the following compilers 
 and platforms:
-- GCC 4.2.3 (using Debian Etch)
-- GCC 3.2 (using RedHat Linux 8.0/9)
-- GCC 3.3.1 (under cygwin)
-- Microsoft Visual C++ 6.0/7.0/7.1 (using Windows)
-- Borland C++ 5.5.1 (using Windows)
-  
+- Clang 7.1.1 (using Ubuntu `xenial` and repository `llvm-toolchain-xenial-7`)
+- GNU GCC 7.3.0 (using Gentoo Linux)
+
 \section main_license License
  
 CppTest is released under the GNU 
 <a href="http://www.gnu.org/copyleft/lesser.html">
 Lesser General Public License</a>.
 
-\section Author
+\section Authors
 - Niklas Lundell 
   <a href="mailto:nilu@users.sourceforge.net">(nilu@users.sourceforge.net)</a>
+- Sebastian Pipping
+  <a href="mailto:sebastan@pipping.org">(sebastan@pipping.org)</a>
 
 */
 
