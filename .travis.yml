@@ -29,6 +29,7 @@ script:
     && ./configure "${configure_args[@]}"  # -Werror would fail configure checks!
   - make CXXFLAGS="${CXXFLAGS} -Werror" all
   - make CXXFLAGS="${CXXFLAGS} -Werror" check
+  - ./test/mytest  # i.e. ensure that the example exits with code 0
   - make distcheck  # without AddressSanitizer
 
 addons:
