@@ -5,6 +5,7 @@ language: cpp
 dist: xenial
 
 script:
+  - set -e
   - ./autogen.sh
   - compile_flags=(
         -pipe
