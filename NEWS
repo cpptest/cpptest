@@ -1,5 +1,5 @@
-Release 2.0.0 -- XXXXXXXXX XX XXXX
-----------------------------------
+Release 2.0.0 -- January 5 2019
+-------------------------------
 - Move to C++11 (GitHub issue #9):
   - Replace deprecated auto_ptr by unique_ptr
   - Remove deprecated dynamic exception specification (e.g. "throw ()")
