@@ -55,7 +55,7 @@ namespace Test
 		Suite();
 		virtual ~Suite();
 		
-		void add(std::auto_ptr<Suite> suite);
+		void add(std::unique_ptr<Suite> suite);
 		
 		bool run(Output& output, bool cont_after_fail = true);
 		
