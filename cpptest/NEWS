@@ -1,5 +1,5 @@
 Release 1.1.2 -- Octobre 4 2012
-------------------------------
+-------------------------------
 - Fixed: Use @libdir@ for generation of libcpptest.pc (#3566605)
     Thanks for the patch to Dagobert Michelsen.
 - Fixed: Respect --htmldir
