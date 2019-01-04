@@ -48,3 +48,4 @@ addons:
       - abi-compliance-checker
       - clang-7
       - doxygen
+      - lzip
