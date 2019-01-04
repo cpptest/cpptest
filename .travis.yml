@@ -37,6 +37,7 @@ script:
   - ./test/mytest --text-terse
   - ./test/mytest --text-verbose
   - make distcheck  # without AddressSanitizer
+  - ./check-abi.sh
 
 addons:
   apt:
@@ -45,5 +46,6 @@ addons:
       - llvm-toolchain-xenial-7
       - ubuntu-toolchain-r-test
     packages:
+      - abi-compliance-checker
       - clang-7
       - doxygen
