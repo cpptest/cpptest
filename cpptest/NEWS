@@ -1,3 +1,10 @@
+Release 2.0.0 -- XXXXXXXXX XX XXXX
+----------------------------------
+- Move to C++11 (GitHub issue #9):
+  - Replace deprecated auto_ptr by unique_ptr
+  - Remove deprecated dynamic exception specification (e.g. "throw ()")
+- Note: soname bumped to 1:8:0
+
 Release 1.1.2 -- Octobre 4 2012
 -------------------------------
 - Fixed: Use @libdir@ for generation of libcpptest.pc (#3566605)
