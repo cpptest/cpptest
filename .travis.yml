@@ -6,12 +6,36 @@ language: cpp
 script:
   - cd cpptest
   - ./autogen.sh
-  - ./configure --enable-doc
-  - make
-  - make check
-  - make distcheck
+  - compile_flags=(
+        -pipe
+
+        -O1
+        -g
+        -fsanitize=address
+        -fno-omit-frame-pointer
+
+        -Wall
+        -Wextra
+        -pedantic
+    )
+    && CXXFLAGS="${compile_flags[*]} -std=c++11"
+    && configure_args=(
+        CC=clang-7
+        CXX=clang++-7
+        CXXFLAGS="${CXXFLAGS}"
+        LDFLAGS='-g -fsanitize=address'
+    )
+    && ./configure "${configure_args[@]}"  # -Werror would fail configure checks!
+  - make CXXFLAGS="${CXXFLAGS} -Werror" all
+  - make CXXFLAGS="${CXXFLAGS} -Werror" check
+  - make distcheck  # without AddressSanitizer
 
 addons:
   apt:
+    sources:
+    # Clang 7:
+      - llvm-toolchain-trusty-7
+      - ubuntu-toolchain-r-test
     packages:
+      - clang-7
       - doxygen
