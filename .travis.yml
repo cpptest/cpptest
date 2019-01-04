@@ -2,6 +2,7 @@
 # Licensed under GNU LGPL v2.1 or later
 
 language: cpp
+dist: xenial
 
 script:
   - cd cpptest
