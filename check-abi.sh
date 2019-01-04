@@ -61,7 +61,7 @@ ensure_built() {
 [[ -f ${prefix_old}.tar.gz ]] || git archive --format=tar.gz \
 		--prefix=${prefix_old}/ --output=${prefix_old}.tar.gz ${version_old}
 [[ -d ${prefix_old} ]] || tar xf ${prefix_old}.tar.gz
-ensure_built ${prefix_old}
+ensure_built ${prefix_old}/cpptest
 
 
 # Create new version binary
@@ -69,7 +69,7 @@ ensure_built .
 
 
 # Run ABI checker
-make_descriptor_xml ${version_old} ${prefix_old}/ > ${abi_old}
+make_descriptor_xml ${version_old} ${prefix_old}/cpptest/ > ${abi_old}
 make_descriptor_xml ${version_new} '' > ${abi_new}
 PS4='# '
 set -x
