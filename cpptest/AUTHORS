@@ -1,5 +1,4 @@
 Current maintainers
-	Nate Gallaher <ngallaher@zoidberg.wp.comcast.net>
 	Sebastian Pipping <sebastian@pipping.org>
 
 Main author:
@@ -12,3 +11,4 @@ Contributors:
 	Nate Gallaher - additional assertion macros
 	Robert Buchholz - build system fixes
 	Dagobert Michelsen - build system fixes
+	Nate Gallaher - maintenance, TEST_ASSERT_EQUALS_* assertions
