@@ -49,4 +49,5 @@ addons:
       - abi-compliance-checker
       - clang-7
       - doxygen
+      - g++-7
       - lzip
