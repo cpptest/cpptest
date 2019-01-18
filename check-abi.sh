@@ -75,4 +75,7 @@ PS4='# '
 set -x
 abi-compliance-checker -d1 ${abi_old} -d2 ${abi_new} -l libcpptest.so \
 		${ABI_CHECKER_OPTIONS} \
-	|| [[ $? -eq 6 || $? -eq 0 ]]
+	|| res=$?
+echo $res
+find logs/ -type f | sort
+find logs/ -type f | sort | xargs cat
