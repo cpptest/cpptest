@@ -24,42 +24,7 @@
 #
 # ---
 
-# --- Initialization of libtool
-
-echo "Creating library tools..."
-LIBTOOLIZE=libtoolize
-if glibtoolize --version &>/dev/null ; then
-	LIBTOOLIZE=glibtoolize
-fi
-${LIBTOOLIZE} --automake --copy --force --verbose
-
-# --- Creation of 'aclocal.m4'
-
-# The autotools are not backwards compatible with previous releases. 
-# Therefore, it often outputs non-important warnings that will be 
-# ignore and suppressed.
-#
-echo "Creating macros..."
-aclocal $aclocal_flags 2>&1 \
-	| grep -v 'warning: underquoted definition of' \
-	| grep -v 'Extending.aclocal' \
-	| grep -v 'Extending%20aclocal' 
-
-# --- Initialization of automake
-
-echo "Creating config/config.h.in..."
-autoheader
-
-echo "Creating Makefile templates..."
-touch README
-automake --gnu --add-missing --copy
-
-# --- Initialization of autoconf
-
-echo "Creating 'configure'..."
-autoconf
-
-# --- Finished...
+echo "Running autoreconf..."
+autoreconf --warnings=all --install --verbose "$@"
 
 echo -e "\nRun: ./configure [OPTIONS]; make; make install\n"
-
