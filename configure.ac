@@ -33,7 +33,7 @@ AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
 
-AM_INIT_AUTOMAKE([1.11.6 gnu dist-bzip2 dist-lzip dist-zip])
+AM_INIT_AUTOMAKE([1.11.6 foreign dist-bzip2 dist-lzip dist-zip])
 AC_CONFIG_HEADERS([config/config.h])
 
 AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])

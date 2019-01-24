@@ -51,7 +51,6 @@ echo "Creating config/config.h.in..."
 autoheader
 
 echo "Creating Makefile templates..."
-touch README
 automake --gnu --add-missing --copy
 
 # --- Initialization of autoconf
