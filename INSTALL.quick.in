@@ -16,7 +16,7 @@ For more detailed information about the installation process, see INSTALL.
 Simple install procedure
 ------------------------
 
-  > gzip -cd cpptest-@VERSION@.tar.gz | tar xvf -   # unpack the sources
+  > tar xf cpptest-@VERSION@.tar.gz                 # unpack the sources
   > cd cpptest-@VERSION@                            # change to the its directory
   > ./configure                                 # run the 'configure' script
   > make                                        # build 'cpptest'
