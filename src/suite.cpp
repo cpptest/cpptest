@@ -122,6 +122,12 @@ namespace Test
 		_suites.push_back(suite.release());
 	}
 	
+	void
+	Suite::add(std::unique_ptr<Suite> suite)
+	{
+		_suites.push_back(suite.release());
+	}
+
 	/// Registers a test function.
 	///
 	/// \b Note: Do not call this function directly, use the TEST_ADD(func)
