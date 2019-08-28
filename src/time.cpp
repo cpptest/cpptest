@@ -159,7 +159,7 @@ namespace Test
 	operator<<(ostream& os, const Time& t)
 	{
 		int old_fill(os.fill());
-		int old_width(os.width());
+		std::streamsize old_width(os.width());
 
 		os << t.seconds() << '.';
 		os.fill('0');
