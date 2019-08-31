@@ -44,7 +44,7 @@ namespace Test
 		if ((errors == 0) || (tests == 0))
 			return 100;
 
-		return (int)((tests - errors) * 100.0 / tests);
+		return (tests - errors) * 100 / tests;
 	}
 
 } // namespace Test
