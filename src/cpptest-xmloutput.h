@@ -206,7 +206,7 @@ namespace Test
 					s += "&quot;";
 					break;
 				case '\'':
-					s += "&apot;";
+					s += "&apos;";
 					break;
 				case '<':
 					s += "&lt;";
