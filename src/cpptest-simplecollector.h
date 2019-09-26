@@ -67,6 +67,7 @@ namespace Test
 		struct BaseMessage
 		{
 			Method method_;
+			virtual ~BaseMessage() {}
 		};
 		struct FinishedMessage : public BaseMessage
 		{
@@ -313,6 +314,14 @@ namespace Test
 
 			errors_ = false;
 			assert_on_assertment_ = false;
+		}
+
+		~SimpleLogCollector()
+		{
+			for (auto& m : messages_)
+			{
+				delete m;
+			}
 		}
 	};
 
