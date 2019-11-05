@@ -34,7 +34,7 @@
 #include <fstream>
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4290)
+	#pragma warning (disable: 4290)
 #endif
 
 #include "../src/cpptest.h"
@@ -49,7 +49,7 @@ public:
 	FailTestSuite()
 	{
 		TEST_ADD(FailTestSuite::success)
-			TEST_ADD(FailTestSuite::always_fail)
+		TEST_ADD(FailTestSuite::always_fail)
 
 	}
 
@@ -72,8 +72,8 @@ public:
 	CompareTestSuite()
 	{
 		TEST_ADD(CompareTestSuite::success)
-			TEST_ADD(CompareTestSuite::compare)
-			TEST_ADD(CompareTestSuite::delta_compare)
+		TEST_ADD(CompareTestSuite::compare)
+		TEST_ADD(CompareTestSuite::delta_compare)
 	}
 
 private:
@@ -84,10 +84,9 @@ private:
 		// Will succeed since the expression evaluates to true
 		//
 		TEST_ASSERT(1 + 1 == 2)
-
-			// Will fail since the expression evaluates to false
-			//
-			TEST_ASSERT(0 == 1);
+		// Will fail since the expression evaluates to false
+		//
+		TEST_ASSERT(0 == 1);
 	}
 
 	void delta_compare()
@@ -95,7 +94,6 @@ private:
 		// Will succeed since the expression evaluates to true
 		//
 		TEST_ASSERT_DELTA(0.5, 0.7, 0.3);
-
 		// Will fail since the expression evaluates to false
 		//
 		TEST_ASSERT_DELTA(0.5, 0.7, 0.1);
@@ -110,7 +108,7 @@ public:
 	ThrowTestSuite()
 	{
 		TEST_ADD(ThrowTestSuite::success)
-			TEST_ADD(ThrowTestSuite::test_throw)
+		TEST_ADD(ThrowTestSuite::test_throw)
 	}
 
 private:
@@ -121,24 +119,24 @@ private:
 		// Will fail since the none of the functions throws anything
 		//
 		TEST_THROWS_MSG(func(), int, "func() does not throw, expected int exception")
-			TEST_THROWS_MSG(func_no_throw(), int, "func_no_throw() does not throw, expected int exception")
-			TEST_THROWS_ANYTHING_MSG(func(), "func() does not throw, expected any exception")
-			TEST_THROWS_ANYTHING_MSG(func_no_throw(), "func_no_throw() does not throw, expected any exception")
+		TEST_THROWS_MSG(func_no_throw(), int, "func_no_throw() does not throw, expected int exception")
+		TEST_THROWS_ANYTHING_MSG(func(), "func() does not throw, expected any exception")
+		TEST_THROWS_ANYTHING_MSG(func_no_throw(), "func_no_throw() does not throw, expected any exception")
 
-			// Will succeed since none of the functions throws anything
-			//
-			TEST_THROWS_NOTHING(func())
-			TEST_THROWS_NOTHING(func_no_throw())
+		// Will succeed since none of the functions throws anything
+		//
+		TEST_THROWS_NOTHING(func())
+		TEST_THROWS_NOTHING(func_no_throw())
 
-			// Will succeed since func_throw_int() throws an int
-			//
-			TEST_THROWS(func_throw_int(), int)
-			TEST_THROWS_ANYTHING(func_throw_int())
+		// Will succeed since func_throw_int() throws an int
+		//
+		TEST_THROWS(func_throw_int(), int)
+		TEST_THROWS_ANYTHING(func_throw_int())
 
-			// Will fail since func_throw_int() throws an int (not a float)
-			//
-			TEST_THROWS_MSG(func_throw_int(), float, "func_throw_int() throws an int, expected a float exception")
-			TEST_THROWS_NOTHING_MSG(func_throw_int(), "func_throw_int() throws an int, expected no exception at all")
+		// Will fail since func_throw_int() throws an int (not a float)
+		//
+		TEST_THROWS_MSG(func_throw_int(), float, "func_throw_int() throws an int, expected a float exception")
+		TEST_THROWS_NOTHING_MSG(func_throw_int(), "func_throw_int() throws an int, expected no exception at all")
 	}
 
 	void func() {}
@@ -171,9 +169,7 @@ cmdline(int argc, char* argv[])
 {
 	if (argc > 2)
 		usage(); // will not return
-
 	Test::Output* output = 0;
-
 	if (argc == 1)
 		output = new Test::TextOutput(Test::TextOutput::Verbose);
 	else
