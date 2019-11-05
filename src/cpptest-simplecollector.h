@@ -74,7 +74,7 @@ namespace Test
 			int tests_;
 			Test::Time time_;
 			FinishedMessage(int tests, const Test::Time& time)
-				: time_(time.seconds(), time.microseconds())
+				: time_(time)
 			{
 				method_ = enum_finished;
 				tests_ = tests;

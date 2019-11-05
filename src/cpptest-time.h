@@ -31,6 +31,7 @@
 
 #include <iostream>
 #include <string>
+#include <chrono>
 
 namespace Test
 {
@@ -44,8 +45,7 @@ namespace Test
 	{
 	public:
 		Time();
-		Time(unsigned int sec, unsigned int usec);
-		
+
 		unsigned int seconds() const;
 		unsigned int microseconds() const;
 		
@@ -57,8 +57,8 @@ namespace Test
 		friend std::ostream& operator<<(std::ostream& os, const Time& t);
 		
 	private:
-		unsigned int _sec;
-		unsigned int _usec;
+		std::chrono::nanoseconds duration_;
+		explicit Time(std::chrono::nanoseconds duration);
 	};
 	
 } // namespace Test

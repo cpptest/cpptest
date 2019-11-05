@@ -32,14 +32,7 @@
 
 #include "missing.h"
 #include "cpptest-time.h"
-
-#ifdef HAVE_GETTIMEOFDAY
-	#ifdef HAVE_SYS_TIME_H
-		#include <sys/time.h>
-	#else
-		#include <time.h>
-	#endif
-#endif
+#include <chrono>
 
 using namespace std;
 
@@ -54,26 +47,20 @@ namespace Test
 	/// Constructs a time object with zeroed time.
 	///
 	Time::Time()
-	:	_sec(0),
-		_usec(0)
+	:	duration_(0)
 	{}
-	
-	/// Constructs a time object.
-	///
-	/// \param sec  Seconds.
-	/// \param usec Micro-seconds.
-	///
-	Time::Time(unsigned int sec, unsigned int usec)
-	:	_sec(sec),
-		_usec(usec)
+
+	Time::Time(std::chrono::nanoseconds dur)
+	:	duration_(dur)
 	{}
+
 	
 	/// \return Seconds.
 	///
 	unsigned int
 	Time::seconds() const
 	{
-		return _sec;
+		return (unsigned int)(duration_.count() / 1000000000);
 	}
 	
 	/// \return Micro-seconds.
@@ -81,7 +68,7 @@ namespace Test
 	unsigned int
 	Time::microseconds() const
 	{
-		return _usec;
+		return (unsigned int)((duration_.count() % 1000000000) / 1000.0 + 0.5);
 	}
 	
 	/// \return The current time.
@@ -89,9 +76,8 @@ namespace Test
 	Time
 	Time::current()
 	{
-		struct timeval tv;
-		gettimeofday(&tv, 0);
-		return Time(tv.tv_sec, tv.tv_usec);
+		std::chrono::high_resolution_clock::time_point time = std::chrono::high_resolution_clock::now();
+		return Time(std::chrono::duration_cast<std::chrono::nanoseconds>(time.time_since_epoch()));
 	}
 	
 	/// \relates Time
@@ -106,21 +92,7 @@ namespace Test
 	Time
 	operator-(const Time& t1, const Time& t2)
 	{
-		if (t2._sec > t1._sec || (t2._sec == t1._sec && t2._usec > t1._usec))
-			return Time();
-		
-		unsigned int sec = t1._sec - t2._sec;
-		unsigned int usec;
-		
-		if (t2._usec > t1._usec)
-		{
-			--sec;
-			usec = UsecPerSec - (t2._usec - t1._usec);
-		}
-		else
-			usec = t1._usec - t2._usec;
-		
-		return Time(sec, usec);
+		return Time(t1.duration_ - t2.duration_);
 	}
 	
 	/// \relates Time
@@ -135,15 +107,7 @@ namespace Test
 	Time
 	operator+(const Time& t1, const Time& t2)
 	{
-		unsigned int sec  = t1._sec + t2._sec;
-		unsigned int usec = t1._usec + t2._usec;
-		
-		if (usec > UsecPerSec)
-		{
-			++sec;
-			usec -= UsecPerSec;
-		}
-		return Time(sec, usec);
+		return Time(t1.duration_ + t2.duration_);
 	}
 	
 	/// \relates Time
