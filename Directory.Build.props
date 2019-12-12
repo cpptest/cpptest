@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<Project ToolsVersion = "4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    When loading a project, Visual Studio walks the directory structure starting
+    in the project directory. If it finds a file name Directory.Build.props, it
+    imports it. We use this file to enforce an exact VCToolsVersion and Windows
+    SDK version. ESRI_VCToolsVersion, ESRI_PlatformToolset, and
+    ESRI_WindowsTargetPlatformVersion are provided as mechanisms for overriding
+    the settings in this file if that is what you want.
+  -->
+  <PropertyGroup>
+    <VCToolsVersion>14.23.28105</VCToolsVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <PlatformToolset>v142</PlatformToolset>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+  </PropertyGroup>
+
+  <!--
+    If this project is in the context of ArcGIS Pro or 10.x, we use the upper
+    Directory.Build.props to override this one.
+  -->
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)..\Directory.Build.props')"
+          Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" />
+
+  <!--
+    This is to cover the case where we did not find an upper level file. We
+    still want to use the ESRI_ settings if set.
+  -->
+  <PropertyGroup>
+    <VCToolsVersion Condition = "'$(ESRI_VCToolsVersion)' != ''" >$(ESRI_VCToolsVersion)</VCToolsVersion>
+    <WindowsTargetPlatformVersion Condition = "'$(ESRI_WindowsTargetPlatformVersion)' != ''" >$(ESRI_WindowsTargetPlatformVersion)</WindowsTargetPlatformVersion>
+    <PlatformToolset Condition = "'$(ESRI_PlatformToolset)' != ''" >$(ESRI_PlatformToolset)</PlatformToolset>
+    <TargetFrameworkVersion Condition = "'$(ESRI_TargetFrameworkVersion)' != ''" >$(ESRI_TargetFrameworkVersion)</TargetFrameworkVersion>
+  </PropertyGroup>
+</Project>
