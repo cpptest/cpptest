@@ -135,7 +135,7 @@
 		if (!((got) == (expected)))										\
 		{																\
 			std::stringstream tmpstream;								\
-			tmpstream.precision(15);	\
+			tmpstream.precision(17);	\
 			tmpstream << "Got " << (got) << ", expected " << (expected);\
 			assertment(::Test::Source(__FILE__, __LINE__,				\
 						tmpstream.str().c_str()));						\
@@ -193,7 +193,7 @@
 		if (!((got) == (expected)))										\
 		{																\
 			std::stringstream tmpstream;								\
-			tmpstream.precision(15);	\
+			tmpstream.precision(17);	\
 			tmpstream << (msg) << ": ";									\
 			tmpstream << "Got " << (got) << ", expected " << (expected);\
 			assertment(::Test::Source(__FILE__, __LINE__,				\
