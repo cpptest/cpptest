@@ -191,7 +191,7 @@ namespace Test
 	private:
 		std::ostream&   _stream;
 		template <class T>
-		typename T escape(const T& v) { return v; }
+		T escape(const T& v) { return v; }
 		std::string escape(const char* xml)
 		{
 			std::string s = "";
