@@ -58,7 +58,7 @@
 ///
 #define TEST_FAIL(msg) \
 	{																\
-		assertment(::Test::Source(__FILE__, __LINE__, (msg) != 0 ? #msg : "")); \
+		assertment(::Test::Source(__FILE__, __LINE__, (msg) != 0 ? msg : "")); \
 		if (!continue_after_failure()) return;						\
 	}
 
