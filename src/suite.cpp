@@ -152,9 +152,19 @@ namespace Test
 	Suite::assertment(Source s)
 	{
 		s._suite = _name;
-		s._test  = *_cur_test;
+		if (_cur_test)
+			s._test  = *_cur_test;
+		else
+			s._test = "";
+
 		_output->assertment(s);
 		_result = _success = false;
+	}
+
+	void
+	Suite::suite_fail()
+	{
+		assertment(::Test::Source("", 0, "uncaught exception thrown in suite_setup or suite_tear_down"));
 	}
 	
 	// Functor to execute tests for the given suite.
@@ -183,7 +193,7 @@ namespace Test
 			}
 
 			if (exception_caught) {
-				_suite.assertment(::Test::Source("", 0, "exception thrown"));
+				_suite.assertment(::Test::Source("", 0, "uncaught exception thrown"));
 			}
 
 			Time end(Time::current());
@@ -212,14 +222,24 @@ namespace Test
 	{
 		_continue = cont_after_fail;
 		_output = os;
-		
-		suite_setup();
-		std::unique_ptr<Suite, void(*)(Suite*)> auto_tear_down(this, [](Suite* p) {
-			p->suite_tear_down();
-		});
 
+		bool exception_caught = false;
 		_output->suite_start(_tests.size(), _name);
-		for_each(_tests.begin(), _tests.end(), ExecTests(*this));
+		try
+		{
+			suite_setup();
+			for_each(_tests.begin(), _tests.end(), ExecTests(*this));
+			suite_tear_down();
+		}
+		catch (...)
+		{
+			exception_caught = true;
+		}
+
+		if (exception_caught) {
+			ExecTests(*this)(Data(&Suite::suite_fail, "Suite Setup/Teardown"));
+		}
+
 		_output->suite_end(_tests.size(), _name, total_time(false));
 
 		for_each(_suites.begin(), _suites.end(), DoRun(_output, _continue));

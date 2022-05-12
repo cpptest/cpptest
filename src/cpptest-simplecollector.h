@@ -249,6 +249,8 @@ namespace Test
 			}
 #endif
 			messages_.push_back(new AssertmentMessage(s));
+			errors_ = true;
+			((SuiteStartMessage*)(*current_suit))->ok_ = false;
 		}
 
 		void playTo(Test::Output& output, enum Mode mode = enum_when_failed_write_only_failures)

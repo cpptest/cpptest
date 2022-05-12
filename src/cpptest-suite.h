@@ -121,6 +121,8 @@ namespace Test
 		int total_tests() const;
 		Time total_time(bool recursive) const;
 		
+		void suite_fail();
+
 		// Disable
 		//
 		Suite(const Suite&);
