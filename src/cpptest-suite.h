@@ -66,9 +66,20 @@ namespace Test
 		
 		bool continue_after_failure() const { return _continue; }
 		
+		/// Called before every test in the suite
+		///
 		virtual void setup()     {}
+		/// Called after every test in the suite
+		///
 		virtual void tear_down() {}
-		
+
+		/// Called before any tests in the suite are run
+		///
+		virtual void suite_setup() {}
+		/// Called after all tests in the suite are run (even if any failed)
+		///
+		virtual void suite_tear_down() {}
+
 		void register_test(Func func, const std::string& name);
 		void assertment(Source s);
 		

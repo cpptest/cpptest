@@ -213,6 +213,11 @@ namespace Test
 		_continue = cont_after_fail;
 		_output = os;
 		
+		suite_setup();
+		std::unique_ptr<Suite, void(*)(Suite*)> auto_tear_down(this, [](Suite* p) {
+			p->suite_tear_down();
+		});
+
 		_output->suite_start(_tests.size(), _name);
 		for_each(_tests.begin(), _tests.end(), ExecTests(*this));
 		_output->suite_end(_tests.size(), _name, total_time(false));
