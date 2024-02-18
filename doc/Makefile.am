@@ -39,7 +39,7 @@ EXTRA_DIST = \
 
 html_DATA= 	html/index.html
 
-IMAGES=		images/*.html images/*.png
+IMAGES=		$(srcdir)/images/*.html $(srcdir)/images/*.png
 
 all:
 	doxygen
