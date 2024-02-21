@@ -117,5 +117,10 @@ jobs:
       - name: './check-abi.sh'
         run: |-
           set -x
-          git fetch --force --tags --unshallow origin  # for "git describe" in check-abi.sh
+
+          # Make "git describe --tags" work (even for forks)
+          git remote get-url origin | grep -q https://github.com/cpptest/cpptest \
+            || git remote set-url origin https://github.com/cpptest/cpptest
+          git fetch --force --tags --unshallow origin
+
           ./check-abi.sh
