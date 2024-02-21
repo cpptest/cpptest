@@ -33,7 +33,7 @@ AM_CXXFLAGS		= $(WARN_FLAGS)
 
 lib_LTLIBRARIES		= libcpptest.la
 
-libcpptest_la_LDFLAGS	= -version-info $(LT_VERSION)
+libcpptest_la_LDFLAGS	= -no-undefined -version-info $(LT_VERSION)
 
 libcpptest_la_SOURCES	= \
 	collectoroutput.cpp \
