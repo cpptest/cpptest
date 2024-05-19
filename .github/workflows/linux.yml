@@ -17,13 +17,13 @@ permissions:
 jobs:
   linux:
     name: Build (${{ matrix.cxx }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         include:
-          - cc: gcc-13
-            cxx: g++-13
+          - cc: gcc-14
+            cxx: g++-14
             clang_major_version: null
             clang_repo_suffix: null
             upload: true
