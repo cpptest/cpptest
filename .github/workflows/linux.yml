@@ -31,7 +31,7 @@ jobs:
             clang_major_version: 18
     steps:
       - name: Checkout Git branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install build dependencies
         run: |-
