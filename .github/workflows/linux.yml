@@ -94,7 +94,7 @@ jobs:
 
       - name: 'Upload "make dist" artifacts'
         if: "${{ matrix.upload }}"
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: cpptest-${{ github.sha }}-release-tarball
           path: build/cpptest-*.tar.bz2
