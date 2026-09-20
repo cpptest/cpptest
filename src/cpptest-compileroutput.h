@@ -99,7 +99,7 @@ namespace Test
 		explicit CompilerOutput(const std::string&	format,
 								std::ostream& 		stream = std::cout);
 		
-		virtual void assertment(const Source& s);
+		void assertment(const Source& s) override;
 		
 	private:
 		std::string		_format;

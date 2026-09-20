@@ -62,13 +62,13 @@ namespace Test
 		
 		TextOutput(Mode mode, std::ostream& stream = std::cout);
 		
-		virtual void finished(int tests, const Time& time);
-		virtual void suite_start(int tests, const std::string& name);
-		virtual void suite_end(int tests, const std::string& name,
-							   const Time& time);
-		virtual void test_end(const std::string& name, bool ok,
-							  const Time& time);
-		virtual void assertment(const Source& s);
+		void finished(int tests, const Time& time) override;
+		void suite_start(int tests, const std::string& name) override;
+		void suite_end(int tests, const std::string& name,
+						   const Time& time) override;
+		void test_end(const std::string& name, bool ok,
+						  const Time& time) override;
+		void assertment(const Source& s) override;
 		
 	private:
 		typedef std::list<Source> ErrorList;
