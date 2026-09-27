@@ -26,9 +26,9 @@ jobs:
             cxx: g++-14
             clang_major_version: null
             upload: true
-          - cc: clang-18
-            cxx: clang++-18
-            clang_major_version: 18
+          - cc: clang-20
+            cxx: clang++-20
+            clang_major_version: 20
     steps:
       - name: Checkout Git branch
         uses: actions/checkout@v7
