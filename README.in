@@ -1,3 +1,11 @@
+###############################################################################
+# IMPORTANT                                                                   #
+#   Release 2.0.1 was the last release of this project, and the project is    #
+#   now unmaintained and closing down. There are alternatives to unit testing #
+#   with C and C++ in 2026: please migrate to one of the alternatives.        #
+#   Thanks for your understanding!                                            #
+###############################################################################
+
 CppTest - A C++ Unit Testing Framework
 
 Table of contents

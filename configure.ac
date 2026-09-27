@@ -28,7 +28,7 @@
 
 AC_PREREQ([2.69])
 
-AC_INIT([CppTest],[2.0.0],[nilu@users.sourceforge.net],[cpptest])
+AC_INIT([CppTest],[2.0.1],[nilu@users.sourceforge.net],[cpptest])
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR(config)
 AC_CONFIG_SRCDIR(autogen.sh)
@@ -48,7 +48,7 @@ AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
 #
 # current:revision:age
 #
-LT_VERSION=1:8:0
+LT_VERSION=1:9:0
 AC_SUBST(LT_VERSION, $LT_VERSION)
 
 ##### Alternatives
