@@ -1,3 +1,18 @@
+Release 2.0.1 -- Semptember 27 2026
+-----------------------------------
+- Fixed: "make distcheck" and vpath/shadow builds (GitHub PR #21)
+- Fixed: Add `-no-undefined` to LDFLAGS for Cygwin (GitHub PR #20)
+    Thanks for the patch to Daisuke Fujimura.
+- Fixed: Remove unused variable (GitHub PR #36)
+    Thanks for the patch to Christoph Grüninger.
+- Improved: Simplify `autogen.sh` (GitHub PR #15)
+- Added: GitHub Actions CI and Dependabot
+    (GitHub PRs #21, #22, #23, #24, #25, #34)
+- Removed: Generic `INSTALL` file (GitHub issue #14, GitHub PR #15)
+- Removed: Travis CI (GitHub PR #21)
+- Removed: `.cvsignore` files (GitHub PR #35)
+- Note: soname bumped to 1:9:0 (libcpptest.so.1.0.9)
+
 Release 2.0.0 -- January 5 2019
 -------------------------------
 - Move to C++11 (GitHub issue #9):
