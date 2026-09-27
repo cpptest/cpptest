@@ -299,8 +299,6 @@ namespace Test
 			: _incl_ok_tests(incl_ok_tests), _os(os) {}
 		void operator()(const SuiteInfo& si)
 		{
-			ostringstream ss;
-			
 			sub_title(_os, "Suite: " + si._name, 3, si._name);
 			table_header(_os, TableClass_Suite, "Details for suite " + si._name);
 			  table_tr_header(_os);
